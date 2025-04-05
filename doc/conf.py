@@ -6,10 +6,10 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = 'Example'
-copyright = 'workshop participant'
-author = 'workshop participant'
-release = '0.1'
+project = 'apsimNGpy'
+copyright = 'richard magala'
+author = 'richard magala'
+release = '0.32'
 
 
 # -- General configuration ---------------------------------------------------
