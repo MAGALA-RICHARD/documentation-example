@@ -26,8 +26,8 @@ Built on object-oriented principles, it provides:
    :caption: Table of Contents
 
    Home <self>
-   getting started
-   Usage
+   getting started.rst
+   Usage.rst
    model inspection
    cli
    factorial_experiments
