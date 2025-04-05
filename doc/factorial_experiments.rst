@@ -17,7 +17,7 @@ First, import the necessary libraries:
     sns.set_style('whitegrid')
     from matplotlib import pyplot as plt
     from apsimNGpy.core.base_data import load_default_simulations
-    from apsimNGpy.core.core import CoreModel
+    from apsimNGpy.core.core import APSIMNG
 
 Creating an Experiment
 ----------------------
@@ -27,7 +27,7 @@ Load the default maize simulations and initialize APSIM:
 .. code-block:: python
 
     _apsim = load_default_simulations(crop='Maize', simulations_object=False)
-    apsim = CoreModel(_apsim)
+    apsim = APSIMNG(_apsim)
 
 Create an experiment with permutation enabled:
 
@@ -74,7 +74,7 @@ Load the maize simulations again and initialize APSIM:
 .. code-block:: python
 
     _apsim = load_default_simulations(crop='Maize', simulations_object=False)
-    apsimC = CoreModel(_apsim)
+    apsimC = APSIMNG(_apsim)
 
 Create an experiment with permutation enabled:
 
