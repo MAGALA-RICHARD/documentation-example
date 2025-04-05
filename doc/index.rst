@@ -28,10 +28,10 @@ Built on object-oriented principles, it provides:
    Home <self>
    getting started.rst
    Usage.rst
-   model inspection
-   cli
-   factorial_experiments
-   api
+   model inspection.rst
+   cli.rst
+   factorial_experiments.rst
+   api.rst
 
 
 
