@@ -110,36 +110,10 @@ Display Model Full Paths
 
 To include full model paths in the output:
 
-.. code-block:: python
-
-    model.inspect_file(display_full_path=True)
-
-    # Output:
-    - Simulations: .Simulations
-        - Simulation: .Simulations.Simulation
-            - Clock: .Simulations.Simulation.Clock
-            - Field: .Simulations.Simulation.Field
-                - Fertilise at sowing: .Simulations.Simulation.Field.Fertilise at sowing
-                - Fertiliser: .Simulations.Simulation.Field.Fertiliser
-                - Harvest: .Simulations.Simulation.Field.Harvest
-                - Maize: .Simulations.Simulation.Field.Maize
-                - Report: .Simulations.Simulation.Field.Report
-                - Soil: .Simulations.Simulation.Field.Soil
-                    - Chemical: .Simulations.Simulation.Field.Soil.Chemical
-                    - NH4: .Simulations.Simulation.Field.Soil.NH4
-                    - NO3: .Simulations.Simulation.Field.Soil.NO3
-                    - Organic: .Simulations.Simulation.Field.Soil.Organic
-                    - Physical: .Simulations.Simulation.Field.Soil.Physical
-                        - MaizeSoil: .Simulations.Simulation.Field.Soil.Physical.MaizeSoil
-                    - Temperature: .Simulations.Simulation.Field.Soil.Temperature
-                    - Urea: .Simulations.Simulation.Field.Soil.Urea
-                    - Water: .Simulations.Simulation.Field.Soil.Water
-                - Sow using a variable rule: .Simulations.Simulation.Field.Sow using a variable rule
-            - Graph: .Simulations.Simulation.Graph
-                - Series: .Simulations.Simulation.Graph.Series
-            - Summary: .Simulations.Simulation.Summary
-            - Weather: .Simulations.Simulation.Weather
-
+.. image:: ../inspect_file.png
+    :alt: Tree structure of the APSIM model
+    :align: center
+    :width: 80%
 
 Note on Model Inspection:
 """""""""""""""""""""""""""""""""""""""""""""""
