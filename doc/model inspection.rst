@@ -13,17 +13,17 @@ Let's take a look at how it works.
 
     model = base_data.load_default_simulations(crop='maize')
 
-    # Retrieve paths to Manager models
+    # Retrieve paths to manager models
     model.inspect_model(model_type=Models.Manager, fullpath=True)
     ['.Simulations.Simulation.Field.Sow using a variable rule',
      '.Simulations.Simulation.Field.Fertilise at sowing',
      '.Simulations.Simulation.Field.Harvest']
 
-    # Retrieve paths to Clock models
+    # Retrieve paths to clock models
     model.inspect_model(model_type=Models.Clock)
     ['.Simulations.Simulation.Clock']
 
-    # Retrieve paths to Crop models
+    # Retrieve paths to crop models
     model.inspect_model(model_type=Models.Core.IPlant)
     ['.Simulations.Simulation.Field.Maize']
 
@@ -110,7 +110,7 @@ Display Model Full Paths
 
 To include full model paths in the output:
 
-.. image:: ../inspect_file.png
+.. image:: ../images/inspect_file.png
     :alt: Tree structure of the APSIM model
     :align: center
     :width: 80%
