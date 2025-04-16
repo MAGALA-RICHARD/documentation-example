@@ -13,17 +13,17 @@ Let's take a look at how it works.
 
     model = base_data.load_default_simulations(crop='maize')
 
-    # Retrieve paths to manager models
+    # Retrieve paths to Manager models
     model.inspect_model(model_type=Models.Manager, fullpath=True)
     ['.Simulations.Simulation.Field.Sow using a variable rule',
      '.Simulations.Simulation.Field.Fertilise at sowing',
      '.Simulations.Simulation.Field.Harvest']
 
-    # Retrieve paths to clock models
+    # Retrieve paths to Clock models
     model.inspect_model(model_type=Models.Clock)
     ['.Simulations.Simulation.Clock']
 
-    # Retrieve paths to crop models
+    # Retrieve paths to Crop models
     model.inspect_model(model_type=Models.Core.IPlant)
     ['.Simulations.Simulation.Field.Maize']
 
@@ -69,51 +69,21 @@ This method helps identify the model type efficiently. However, you need to know
 
 Whole Model inspection
 =====================================
-Display Model Names Only
-""""""""""""""""""""""""""""""""""""""
 
-Use the following to inspect the model with names only:
+
+Use `inspect_file`` method to inspects all simulations in the file. This method displays a tree showing how each model is connected with each other
+
 
 .. code-block:: python
 
-    model.inspect_file(display_full_path=False)
-
-    # Output:
-    - Simulations
-        - Simulation
-            - Clock
-            - Field
-                - Fertilise at sowing
-                - Fertiliser
-                - Harvest
-                - Maize
-                - Report
-                - Soil
-                    - Chemical
-                    - NH4
-                    - NO3
-                    - Organic
-                    - Physical
-                        - MaizeSoil
-                    - Temperature
-                    - Urea
-                    - Water
-                - Sow using a variable rule
-            - Graph
-                - Series
-            - Summary
-            - Weather
+    model.inspect_file()
 
 
-Display Model Full Paths
-"""""""""""""""""""""""""""""""""""""
 
-To include full model paths in the output:
-
-.. image:: ../images/inspect_file.png
+.. image:: ../inspect_file.png
     :alt: Tree structure of the APSIM model
     :align: center
-    :width: 80%
+    :width: 100%
 
 Note on Model Inspection:
 """""""""""""""""""""""""""""""""""""""""""""""
