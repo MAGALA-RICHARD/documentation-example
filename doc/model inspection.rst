@@ -80,7 +80,7 @@ Use `inspect_file`` method to inspects all simulations in the file. This method 
 
 
 
-.. image:: ../inspect_file.png
+.. image:: ../images/inspect_file.png
     :alt: Tree structure of the APSIM model
     :align: center
     :width: 100%
