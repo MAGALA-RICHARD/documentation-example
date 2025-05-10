@@ -49,9 +49,7 @@ ApsimModel
    Updates soil parameters and configurations for downloaded soil data in simulation models.
 
             This method adjusts soil physical and organic parameters based on provided soil tables and applies these
-            adjustments to specified simulation models. Optionally, it can adjust the Radiation Use Efficiency (RUE)
-            based on a Carbon to Sulfur ratio (CSR) sampled from the provided soil tables.
-
+            adjustments to specified simulation models.
             Parameters:
                  :param soil_tables (list): A list containing soil data tables. Expected to contain: see the naming
             convention in the for APSIM - [0]: DataFrame with physical soil parameters. - [1]: DataFrame with organic
