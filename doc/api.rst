@@ -1483,6 +1483,59 @@ apsimNGpy.core.structure
             The modified ApsimModel object after the spin-up operation.
             you could call save_edited file and save it to your specified location, but you can also proceed with the simulation
 
+apsimNGpy.core_utils.database_utils 
+--------------------------------------------------
+
+.. function:: apsimNGpy.core_utils.database_utils.clear_table(db, table_name)
+
+   :param db: path to db
+    :param table_name: name of the table to clear
+    :return: None
+
+.. function:: apsimNGpy.core_utils.database_utils.dataview_to_dataframe(_model, reports)
+
+   Convert .NET System.Data.DataView to Pandas DataFrame.
+    report (str, list, tuple) of the report to be displayed. these should be in the simulations
+    :param apsimng model: CoreModel object or instance
+    :return: Pandas DataFrame
+
+.. function:: apsimNGpy.core_utils.database_utils.get_db_table_names(d_b)
+
+   :param d_b: database name or path
+    :return: all names sql database table names existing within the database
+
+.. function:: apsimNGpy.core_utils.database_utils.read_with_query(db, query)
+
+   Executes an SQL query on a specified database and returns the result as a Pandas DataFrame.
+
+        Args:
+        :db (str): The database file path or identifier to connect to.
+        :query (str): The SQL query string to be executed. The query should be a valid SQL SELECT statement.
+
+        Returns:
+        pandas.DataFrame: A DataFrame containing the results of the SQL query.
+
+        The function opens a connection to the specified SQLite database, executes the given SQL query,
+        fetches the results into a DataFrame, then closes the database connection.
+
+        Example:
+            # Define the database and the query
+            database_path = 'your_database.sqlite'
+            sql_query = 'SELECT * FROM your_table WHERE condition = values'
+
+            # Get the query result as a DataFrame
+            df = read_with_query(database_path, sql_query)
+
+            # Work with the DataFrame
+            print(df)
+
+        Note: Ensure that the database path and the query are correct and that the query is a proper SQL SELECT statement.
+        The function uses 'sqlite3' for connecting to the database; make sure it is appropriate for your database.
+
+.. class:: apsimNGpy.core_utils.exceptionsTableNotFoundError
+
+   Exception raised when the specified table cannot be found.
+
 apsimNGpy.manager.soilmanager 
 --------------------------------------------
 
@@ -1696,44 +1749,6 @@ apsimNGpy.parallel.process
     - Progress information is displayed during execution.
     - Handle any exceptions that may occur during execution to avoid aborting the whole download
 
-.. function:: apsimNGpy.parallel.process.read_result_in_parallel(iterable_files: Iterable, ncores: int = None, use_threads: bool = False, report_name: str = 'Report', **kwargs)
-
-   Read APSIMX simulation databases results from multiple files in parallel.
-
-    Args:
-    - iterable_files (list): A list of APSIMX db files to be read in parallel.
-    - ncores (int, optional): The number of CPU cores or threads to use for parallel processing. If not provided, it defaults to 50% of available CPU cores.
-    - use_threads (bool, optional): If set to True, the function uses thread pool execution; otherwise, it uses process pool execution. Default is False.
-    -  report_name the name of the report table defaults to "Report" you can use None to return all
-
-    Returns:
-    - generator: A generator yielding the simulation data read from each file.
-
-    Example:
-    ```python
-    # Example usage of read_result_in_parallel function
-    from  apsimNgpy.parallel.process import read_result_in_parallel
-
-    simulation_files = ["file1.db", "file2.db", ...]  # Replace with actual database file names
-
-    # Using processes for parallel execution
-    result_generator = read_result_in_parallel(simulation_files, ncores=4, use_threads=False)
-
-    # Iterate through the generator to process results
-    for data in result_generator:
-        print(data)
-    it depends on the child of data but pd.concat could be a good option on the returned generator
-    Kwargs
-        func custom method for reading data
-    ```
-
-    Notes:
-    - This function efficiently reads db file results in parallel.
-    - The choice of thread or process execution can be specified with the `use_threads` parameter.
-    - By default, the function uses 50% of available CPU cores or threads if `ncores` is not provided.
-    - Progress information is displayed during execution.
-    - Handle any exceptions that may occur during execution for robust processing.
-
 .. function:: apsimNGpy.parallel.process.run_apsimx_files_in_parallel(iterable_files: Iterable, **kwargs)
 
    Run APSIMX simulation from multiple files in parallel.
@@ -1898,22 +1913,4 @@ apsimNGpy.validation.evaluator
             :param window: moving window e.g., 5 year period
 
         Returns:
-
-check_column_value_exists 
-----------------------------------------
-
-clear_table 
---------------------------
-
-dataview_to_dataframe 
-------------------------------------
-
-get_db_table_names 
----------------------------------
-
-pl_save_todb 
----------------------------
-
-wrapper 
-----------------------
 
