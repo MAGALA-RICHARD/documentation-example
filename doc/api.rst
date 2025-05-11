@@ -196,6 +196,45 @@ CoreModel
             >>> apsim.add_factor(specification="[Sow using a variable rule].Script.Population =4 to 8 step 2", factor_name='Population')
             >>> apsim.run() # doctest: +SKIP
 
+.. function:: apsimNGpy.core.core.CoreModel.add_model(self, model_type, adoptive_parent, rename=None, adoptive_parent_name=None, verbose=False, source='Models', source_model_name=None, override=True, **kwargs)
+
+   Adds a model to the Models Simulations namespace.
+
+        Some models are restricted to specific parent models, meaning they can only be added to compatible models.
+        For example, a Clock model cannot be added to a Soil model.
+
+        Args:
+            :model_type (str or Models object): The type of model to add, e.g., `Models.Clock` or just `"Clock"`. if the APSIM Models namespace is exposed to the current script, then model_type can be Models.Clock without strings quotes
+            rename (str): The new name for the model.
+
+            :adoptive_parent (Models object): The target parent where the model will be added or moved e.g `Models.Clock` or Clock as string all are valid
+
+            :adoptive_parent_name (Models object, optional): Specifies the parent name for precise location. e.g Models.Core.Simulation or Simulations all are valid
+
+            :source (Models, str, CoreModel, ApsimModel object): defaults to Models namespace, implying a fresh non modified model.
+            The source can be an existing Models or string name to point to one fo the default model example, which we can extract the model 
+            
+            :override (bool, optional): defaults to `True`. When `True` (recomended) it delete for any model with same name and type at the suggested parent location before adding the new model
+            if False and proposed model to be added exists at the parent location, APSIM automatically generates a new name for the newly added model. This is not recommended.
+        Returns:
+            None: Models are modified in place, so models retains the same reference.
+
+        Note:
+            Added models are initially empty. Additional configuration is required to set parameters.
+            For example, after adding a Clock module, you must set the start and end dates.
+
+        Example:
+
+         >>> from apsimNGpy import core
+         >>> from apsimNGpy.core.core import Models
+         >>> model =core.base_data.load_default_simulations(crop = "Maize")
+         >>> model.remove_model(Models.Clock) # first delete model
+         >>> model.add_model(Models.Clock, adoptive_parent = Models.Core.Simulation, rename = 'Clock_replaced', verbose=False)
+
+         >>> model.add_model(model_type=Models.Core.Simulation, adoptive_parent=Models.Core.Simulations, rename='Iowa')
+         >>> model.preview_simulation() # doctest: +SKIP
+         >>> model.add_model(Models.Core.Simulation, adoptive_parent='Simulations', rename='soybean_replaced', source='Soybean') # basically adding another simulation from soybean to the maize simulation
+
 .. function:: apsimNGpy.core.core.CoreModel.add_report_variable(self, variable_spec: Union[list, str, tuple], report_name: str = None, set_event_names: Union[str, list] = None)
 
    This adds a report variable to the end of other variables, if you want to change the whole report use change_report
@@ -294,6 +333,44 @@ CoreModel
            >> Please proceed with caution, we assume that if you want to clear the model objects, then you don't need them,
            but by making copy compulsory, then, we are clearing the edited files
 
+.. function:: apsimNGpy.core.core.CoreModel.clone_model(self, model_type, model_name, adoptive_parent_type, rename=None, adoptive_parent_name=None, in_place=False)
+
+   Clone an existing model and move it to a specified parent within the simulation structure.
+        The function modifies the simulation structure by adding the cloned model to the designated parent.
+
+        This function is useful when a model instance needs to be duplicated and repositioned in the APSIM simulation
+        hierarchy without manually redefining its structure.
+
+        Parameters:
+        ----------
+        model_type : Models
+            The type of the model to be cloned, e.g., `Models.Simulation` or `Models.Clock`.
+        model_name : str
+            The unique identification name of the model instance to be cloned, e.g., `"clock1"`.
+        adoptive_parent_type : Models
+            The type of the new parent model where the cloned model will be placed.
+        rename : str, optional
+            The new name for the cloned model. If not provided, the clone will be renamed using
+            the original name with a `_clone` suffix.
+        adoptive_parent_name : str, optional
+            The name of the parent model where the cloned model should be moved. If not provided,
+            the model will be placed under the default parent of the specified type.
+        in_place : bool, optional
+            If True, the cloned model remains in the same location but is duplicated. Defaults to False.
+
+        Returns:
+        -------
+        None
+
+
+        Example:
+        -------
+        >>> from apsimNGpy.core.base_data import load_default_simulations
+        >>> model  = load_default_simulations('Maize')
+        >>> model.clone_model('Models.Clock', "clock1", 'Models.Simulation', rename="new_clock",adoptive_parent_type= 'Models.Core.Simulations', adoptive_parent_name="Simulation")
+        ```
+        This will create a cloned version of `"clock1"` and place it under `"Simulation"` with the new name `"new_clock"`.
+
 .. function:: apsimNGpy.core.core.CoreModel.create_experiment(self, permutation: bool = True, base_name: str = None, **kwargs)
 
    Initialize an Experiment instance, adding the necessary models and factors.
@@ -330,7 +407,7 @@ CoreModel
 
 .. function:: apsimNGpy.core.core.CoreModel.edit_model(self, model_type: str, simulations: Union[str, list], model_name: str, **kwargs)
 
-   Modify various APSIM model components by type and name across given simulations.
+   Modify various APSIM model components by specifying the model type and name across given simulations.
 
         Parameters:
         ----------
@@ -430,7 +507,7 @@ CoreModel
 
 .. function:: apsimNGpy.core.core.CoreModel.extract_start_end_years(self, simulations: str = None)
 
-   Get simulation dates
+   Get simulation dates. deprecated
 
         Parameters
         ----------
@@ -515,7 +592,7 @@ CoreModel
 
 .. function:: apsimNGpy.core.core.CoreModel.inspect_model(self, model_type: Union[str, <module 'Models'>], fullpath=True, **kwargs)
 
-   Inspect the model types and returns the model paths or names. usefull if you want to identify the path or name of the
+   Inspect the model types and returns the model paths or names. usefull if you want to identify the path to the
         model for editing the model.
         :param model_type: (Models) e.g. Models.Clock will return all fullpath or names
         of models in the type Clock -Models.Manager returns information about the manager scripts in simulations. strings are allowed
@@ -547,6 +624,7 @@ CoreModel
 .. function:: apsimNGpy.core.core.CoreModel.inspect_model_parameters(self, model_type, simulations, model_name)
 
    Inspect the current input values of a specific APSIM model type instance within given simulations.
+            This is all in one place to inspect the model, replacing examine_management_info, read_cultivar_params
 
             Parameters:
             -----------
@@ -810,7 +888,7 @@ CoreModel
 
 .. function:: apsimNGpy.core.core.CoreModel.save_edited_file(self, out_path: os.PathLike = None, reload: bool = False) -> Optional[ForwardRef('CoreModel')]
 
-   Saves the model to the local drive.
+   Saves the model to the local drive. depricated and replaced by save() method
 
             Notes: - If `out_path` is None, the `save_model_to_file` function extracts the filename from the
             `Model.Core.Simulation` object. - `out_path`, however, is given high priority. Therefore,
@@ -919,6 +997,27 @@ CoreModel
         int, float, bool,str etc.
 
         return: self
+
+ModelTools 
+-------------------------
+
+.. function:: apsimNGpy.core._modelhelpers.ModelTools() -> None
+
+   A utility class providing convenient access to core APSIM model operations and constants.
+
+       Attributes:
+           ADD (callable): Function or class for adding components to an APSIM model.
+           DELETE (callable): Function or class for deleting components from an APSIM model.
+           MOVE (callable): Function or class for moving components within the model structure.
+           RENAME (callable): Function or class for renaming components.
+           CLONER (callable): Utility to clone APSIM models or components.
+           REPLACE (callable): Function to replace components in the model.
+           MultiThreaded (Enum): Enumeration value to specify multi-threaded APSIM runs.
+           SingleThreaded (Enum): Enumeration value to specify single-threaded APSIM runs.
+           ModelRUNNER (class): APSIM run manager that handles simulation execution.
+           CLASS_MODEL (type): The type of the APSIM Clock model, often used for type checks or instantiation.
+           ACTIONS (tuple): Set of supported string actions ('get', 'delete', 'check').
+           COLLECT (callable): Function for collecting or extracting model data (e.g., results, nodes).
 
 apsimNGpy.core.base_data 
 ---------------------------------------
