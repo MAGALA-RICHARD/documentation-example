@@ -328,6 +328,44 @@ CoreModel
 
         Returns: instance of the class CoreModel or ApsimModel
 
+.. function:: apsimNGpy.core.core.CoreModel.edit_model(self, model_type: str, simulations: Union[str, list], model_name: str, **kwargs)
+
+   Modify various APSIM model components by type and name across given simulations.
+
+        Parameters:
+        ----------
+        model_type : str
+            Name of the model class (e.g., 'Clock', 'Manager', 'Soils.Physical', etc.)
+        simulations : Union[str, list]
+            A simulation name or list of simulation names to search in. defaults to all simulations in the model
+        model_name : str
+            Name of the model instance to modify.
+        kwargs : dict
+            Additional keyword arguments required per model type:
+
+
+            - Weather: 'weather_file' as strings path pointing to the weather .met file
+            - Clock: Any subset of date properties (e.g., 'Start', 'End') as ISO strings.
+            - Manager: Variables to update in the Manager script using `update_mgt_by_path`.
+            - Soils.Physical / Soils.Chemical / Soils.Organic / Soils.Water: Variables to replace via `replace_soils_values_by_path`.
+            - Report:
+                - report_name (str): Required
+                - variable_spec (list[str]): Variables to report
+                - set_event_names (list[str]): Events to trigger reporting
+            - Cultivar:
+                - commands (str): APSIM cultivar path to the parameter name to set
+                - values (Any): Value to assign
+                - name of the manager script manning the sowing variables, this is expected to have the CultivarName parameter for holding the cultiva name
+                it is needed after editing the cultivar, to replace the old values with new cultivar name since APSIM has made cultivar readonly models
+
+        Raises:
+        -------
+        ValueError:
+            If model instance is not found, or required kwargs are missing.
+            if kwargs dictionary is empty: meaning none of the corresponding parameter for a model was not supplied
+        NotImplementedError:
+            If no logic is implemented for the model type.
+
 .. function:: apsimNGpy.core.core.CoreModel.examine_management_info(self, simulations: Union[list, tuple] = None)
 
    This will show the current management scripts in the simulation root
@@ -477,7 +515,7 @@ CoreModel
 
 .. function:: apsimNGpy.core.core.CoreModel.inspect_model(self, model_type: Union[str, <module 'Models'>], fullpath=True, **kwargs)
 
-   Inspect the model types and returns the model paths or names. usefull if you want to identify the path to the
+   Inspect the model types and returns the model paths or names. usefull if you want to identify the path or name of the
         model for editing the model.
         :param model_type: (Models) e.g. Models.Clock will return all fullpath or names
         of models in the type Clock -Models.Manager returns information about the manager scripts in simulations. strings are allowed
@@ -510,40 +548,41 @@ CoreModel
 
    Inspect the current input values of a specific APSIM model type instance within given simulations.
 
-    Parameters:
-    -----------
-    scope : ApsimNG model context with Models.Core.Simulations  and its associated Simulation
-        Root scope or project object containing Simulations.
-    model_type : str
-        Name of the model class (e.g., 'Clock', 'Manager', 'Soils.Physical', etc.)
-    simulations : Union[str, list]
-        Name or list of names of simulation(s) to inspect.
-    model_name : str
-        Name of the model instance within each simulation.
-    **kwargs : dict
-        Optional keyword arguments — not used here but accepted for interface compatibility.
+            Parameters:
+            -----------
+            the search scope is the current instatiated model of ApsimNG model context with Models.Core.Simulations  and its associated Simulation models
 
-    Returns:
-    --------
-    Union[Dict[str, Any], pd.DataFrame, list, Any]
-        - For Weather: file path(s)
-        - For Clock: (start, end) tuple(s)
-        - For Manager: dictionary of parameters
-        - For Soil models: pandas DataFrame(s) of layer-based properties
-        - For Report: dictionary with 'VariableNames' and 'EventNames'
-        - For Cultivar: dictionary of parsed parameter=value pairs
+            model_type : str
+                Name of the model class (e.g., 'Clock', 'Manager', 'Physical', 'Chemical', etc.) these are abstracted from the model namespace,
+                 so no need for a complete path, although completed pathes are also valid e.g., Models.Clock, Models.Manager, Models.Climate.Weather if you want some kind of clarity
+            simulations : Union[str, list]
+                Name or list of names of simulation(s) to inspect.
+            model_name : str
+                Name of the model instance within each simulation.
+            **kwargs : dict
+                Optional keyword arguments — not used here but accepted for interface compatibility.
 
-    Raises:
-    -------
-    ValueError:
-        If model is not found or invalid arguments are passed.
-    NotImplementedError:
-        If the model type is unsupported.
+            Returns:
+            --------
+            Union[Dict[str, Any], pd.DataFrame, list, Any]
+                - For Weather: file path(s)
+                - For Clock: (start, end) tuple(s)
+                - For Manager: dictionary of parameters,
+                - For Soil models: pandas DataFrame(s) of layer-based properties
+                - For Report: dictionary with 'VariableNames' and 'EventNames'
+                - For Cultivar: dictionary of parsed parameter=value pairs
 
-    Requirements:
-    -------------
-    - APSIM Next Gen Python bindings (apsimNGpy)
-    - Python 3.10+
+            Raises:
+            -------
+            ValueError:
+                If model is not found or invalid arguments are passed.
+            NotImplementedError:
+                If the model type is unsupported.
+
+            Requirements:
+            -------------
+            - APSIM Next Gen Python bindings (apsimNGpy)
+            - Python 3.10+
 
 .. function:: apsimNGpy.core.core.CoreModel.move_model(self, model_type: <module 'Models'>, new_parent_type: <module 'Models'>, model_name: str = None, new_parent_name: str = None, verbose: bool = False, simulations: Union[str, list] = None)
 
