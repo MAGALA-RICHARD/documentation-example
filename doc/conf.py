@@ -18,6 +18,10 @@ extensions = [
 
 ]
 
+html_css_files = [
+    'custom_css.css',
+]
+
 templates_path = ['_templates']
 exclude_patterns = ['sphinx.ext.duration',
 'sphinx.ext.napoleon',
