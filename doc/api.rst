@@ -105,7 +105,7 @@ ApsimModel
 CoreModel 
 ------------------------
 
-.. function:: apsimNGpy.core.core.CoreModel(model: Union[str, pathlib.Path, dict] = None, out_path: Union[str, pathlib.Path] = None, out: Union[str, pathlib.Path] = None, set_wd: Union[str, pathlib.Path] = None, experiment=False, **kwargs)
+.. function:: apsimNGpy.core.core.CoreModel(model: Union[str, pathlib.Path, dict] = None, out_path: Union[str, pathlib.Path, NoneType] = None, out: Union[str, pathlib.Path, NoneType] = None, set_wd: Union[str, pathlib.Path, NoneType] = None, experiment: bool = False, copy: Optional[bool] = None) -> None
 
    Modify and run APSIM Next Generation (APSIM NG) simulation models.
 
@@ -388,7 +388,8 @@ CoreModel
 
 .. function:: apsimNGpy.core.core.CoreModel.edit_cultivar(self, *, CultivarName: str, commands: str, values: Any, **kwargs)
 
-   Edits the parameters of a given cultivar. we don't need a simulation name for this unless if you are defining it in the
+   @deprecated
+        Edits the parameters of a given cultivar. we don't need a simulation name for this unless if you are defining it in the
         manager section, if that it is the case, see update_mgt.
 
         Requires:
@@ -442,6 +443,23 @@ CoreModel
             if kwargs dictionary is empty: meaning none of the corresponding parameter for a model was not supplied
         NotImplementedError:
             If no logic is implemented for the model type.
+        Examples:
+            >>> model = CoreModel(model = 'Maize')
+
+            >>> model.edit_model(
+                        ...     model_type = 'Cultivar',
+                        ...     simulations='Simulation',
+                        ...     commands='[Phenology].Juvenile.Target.FixedValue',
+                        ...     values=256,
+                        ...     model_name='B_110',
+                        ...     cultivar_manager='Sow using a variable rule'
+                        ... ) # edits model cultivar
+            >>> model.edit_model(
+                        ...     model_type = 'Organic',
+                        ...     simulations='Simulation',
+                        ...     model_name = 'Organic',
+                        ...     Carbon = 1.23
+                        ... ) # edits soil organic profile
 
 .. function:: apsimNGpy.core.core.CoreModel.examine_management_info(self, simulations: Union[list, tuple] = None)
 
@@ -560,14 +578,6 @@ CoreModel
    :param Crop: crop to get the replacement
         :return: System.Collections.Generic.IEnumerable APSIM plant object
 
-.. function:: apsimNGpy.core.core.CoreModel.get_current_cultivar_name(self, ManagerName: str)
-
-   Args:
-       - ManagerName: script manager module in the zone
-
-       Returns:
-           returns the current cultivar name in the manager script 'ManagerName'
-
 .. function:: apsimNGpy.core.core.CoreModel.get_model_paths(self, cultivar=False) -> list[str]
 
    select out a few model types to use for building the APSIM file inspections
@@ -621,7 +631,7 @@ CoreModel
          ['.Simulations.Simulation.Field.Fertiliser']
          >>> model.inspect_model('Models.Fertiliser', fullpath=False) # strings are allowed to
 
-.. function:: apsimNGpy.core.core.CoreModel.inspect_model_parameters(self, model_type, simulations, model_name)
+.. function:: apsimNGpy.core.core.CoreModel.inspect_model_parameters(self, model_type, simulations, model_name, parameters: Union[list, str] = None, **kwargs)
 
    Inspect the current input values of a specific APSIM model type instance within given simulations.
             This is all in one place to inspect the model, replacing examine_management_info, read_cultivar_params
@@ -661,6 +671,80 @@ CoreModel
             -------------
             - APSIM Next Gen Python bindings (apsimNGpy)
             - Python 3.10+
+            Examples:
+                >>> model_instance = CoreModel('Maize')
+                >>> model_instance.inspect_model_parameters(model_type='Organic', simulations= 'Simulation', model_name='Organic') # inspect the values for soil organic profile only layered paramter are returned
+                        CNR  Carbon      Depth  FBiom  ...         FOM  Nitrogen  SoilCNRatio  Thickness
+                    0  12.0    1.20      0-150   0.04  ...  347.129032     0.100         12.0      150.0
+                    1  12.0    0.96    150-300   0.02  ...  270.344362     0.080         12.0      150.0
+                    2  12.0    0.60    300-600   0.02  ...  163.972144     0.050         12.0      300.0
+                    3  12.0    0.30    600-900   0.02  ...   99.454133     0.025         12.0      300.0
+                    4  12.0    0.18   900-1200   0.01  ...   60.321981     0.015         12.0      300.0
+                    5  12.0    0.12  1200-1500   0.01  ...   36.587131     0.010         12.0      300.0
+                    6  12.0    0.12  1500-1800   0.01  ...   22.191217     0.010         12.0      300.0
+                >>> model_instance.inspect_model_parameters(model_type='Organic', simulations= 'Simulation', model_name='Organic', parameters='Carbon') # inspects only carbon
+                   Carbon
+                0    1.20
+                1    0.96
+                2    0.60
+                3    0.30
+                4    0.18
+                5    0.12
+                6    0.12
+                >>> model_instance.inspect_model_parameters(model_type='Organic', simulations= 'Simulation', model_name='Organic', parameters=['Carbon', 'CNR']) # inspect CNR and carbon
+                      CNR  Carbon
+                    0  12.0    1.20
+                    1  12.0    0.96
+                    2  12.0    0.60
+                    3  12.0    0.30
+                    4  12.0    0.18
+                    5  12.0    0.12
+                    6  12.0    0.12
+                # Inspect the EventNames parameter in the Report data base attached to simulations
+                >>> model_instance.inspect_model_parameters(model_type='Report', simulations= 'Simulation', model_name='Report', parameters='EventNames')
+                >>> {'EventNames': ['[Maize].Harvesting']}
+                # The code below returns both the EventNames and VariableNames
+                >>> model_instance.inspect_model_parameters(model_type='Report', simulations= 'Simulation', model_name='Report', parameters=None)
+                >>> {'VariableNames': ['[Clock].Today', '[Maize].Phenology.CurrentStageName', '[Maize].AboveGround.Wt', '[Maize].AboveGround.N', '[Maize].Grain.Total.Wt*10 as Yield', '[Maize].Grain.Wt', '[Maize].Grain.Size', '[Maize].Grain.NumberFunction', '[Maize].Grain.Total.Wt', '[Maize].Grain.N', '[Maize].Total.Wt'], 'EventNames': ['[Maize].Harvesting']}
+                >>> model_instance.inspect_model_parameters(model_type='Report', simulations= 'Simulation', model_name='Report', parameters='VariableNames')
+                {'VariableNames': ['[Clock].Today',
+                   '[Maize].Phenology.CurrentStageName',
+                   '[Maize].AboveGround.Wt',
+                   '[Maize].AboveGround.N',
+                   '[Maize].Grain.Total.Wt*10 as Yield',
+                   '[Maize].Grain.Wt',
+                   '[Maize].Grain.Size',
+                   '[Maize].Grain.NumberFunction',
+                   '[Maize].Grain.Total.Wt',
+                   '[Maize].Grain.N',
+                   '[Maize].Total.Wt']}
+                # inspect the met file path
+                >>> model_instance.inspect_model_parameters(model_type='Weather',simulations= "Simulation", model_name= 'Weather')
+                '%root%/Examples/WeatherFiles/AU_Dalby.met'
+                # Inspect a manager script.
+                >>> model_instance.inspect_model_parameters(model_type="Manager", simulations='Simulation', model_name='Sow using a variable rule')
+                {'Crop': 'Maize', 'StartDate': '1-nov', 'EndDate': '10-jan', 'MinESW': '100.0', 'MinRain': '25.0', 'RainDays': '7',
+                 'CultivarName': 'Dekalb_XL82', 'SowingDepth': '30.0', 'RowSpacing': '750.0', 'Population': '10'}
+                # Inspect only a few parameters
+                >>> model_instance.inspect_model_parameters(model_type="Manager", simulations='Simulation', model_name='Sow using a variable rule', parameters = ['Population', 'StartDate'])
+                {'StartDate': '1-nov', 'Population': '10'}
+                # Inspect only one parameter
+               >>> model_instance.inspect_model_parameters(model_type="Manager", simulations='Simulation', model_name='Sow using a variable rule', parameters = 'Population')
+                {'Population': '10'}
+                # Inspect a Model cultivar
+                >>> model_instance.inspect_model_parameters("Cultivar", simulations='Simulation', model_name='B_110')
+                {'[Phenology].Juvenile.Target.FixedValue': '210',
+                   '[Phenology].Photosensitive.Target.XYPairs.X': '0, 12.5, 24',
+                   '[Phenology].Photosensitive.Target.XYPairs.Y': '0, 0, 0',
+                   '[Phenology].FlagLeafToFlowering.Target.FixedValue': '1',
+                   '[Phenology].FloweringToGrainFilling.Target.FixedValue': '170',
+                   '[Phenology].GrainFilling.Target.FixedValue': '730',
+                   '[Phenology].Maturing.Target.FixedValue': '1',
+                   '[Phenology].MaturityToHarvestRipe.Target.FixedValue': '100',
+                   '[Rachis].DMDemands.Structural.DMDemandFunction.MaximumOrganWt.FixedValue': '36'}
+                # Inspect a selected cultivar
+                >>> model_instance.inspect_model_parameters("Cultivar", simulations='Simulation', model_name='B_110', parameters = '[Phenology].Juvenile.Target.FixedValue')
+                {'[Phenology].Juvenile.Target.FixedValue': '210'}
 
 .. function:: apsimNGpy.core.core.CoreModel.move_model(self, model_type: <module 'Models'>, new_parent_type: <module 'Models'>, model_name: str = None, new_parent_name: str = None, verbose: bool = False, simulations: Union[str, list] = None)
 
