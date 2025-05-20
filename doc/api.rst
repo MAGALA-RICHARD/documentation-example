@@ -1325,12 +1325,22 @@ apsimNGpy.core.base_data
 .. function:: apsimNGpy.core.base_data.load_default_sensitivity_model(method: str, set_wd: str = None, simulations_object: bool = True)
 
    Load default simulation model from ``APSIM`` Example Folder.
-    :``method``: string of the sentitivity child to load e.g. ``"Morris"`` or ``Sobol``, not case-sensitive
-    :``set_wd``: string of the set_wd to copy the model
-    :``simulations_object``: bool to specify whether to return apsimNGp.core simulation object defaults to ``True``
-    :@return: apsimNGpy.core.CoreModel simulation objects
+
+    ``method``: string of the sentitivity child to load e.g. ``"Morris"`` or ``Sobol``, not case-sensitive
+
+    ``set_wd``: string of the set_wd to copy the model
+
+    ``simulations_object``: bool to specify whether to return apsimNGp.core simulation object defaults to ``True``
+
+    Return:
+    -------------
+        apsimNGpy.core.CoreModel simulation objects
+
      Example
+     -----------------
+
     # load apsimNG object directly
+
     >>> morris_model = load_default_sensitivity_model(method = 'Morris', simulations_object=True)
 
     # >>> morris_model.run()
@@ -1340,9 +1350,15 @@ apsimNGpy.core.base_data
    Load specific crop default simulation model from the ``APSIM`` Example Folder.
 
     ``crop``: Crop to load (e.g., "Maize"). Not case-sensitive. defaults to ``Maize``
+
     ``set_wd``: Working directory to which the model should be copied.
+
     ``simulations_object``: If True, returns an APSIMNGpy.core simulation object; if False, returns the path to the simulation file.
-    :return: An APSIMNGpy.core simulation object or the file path (str or Path) if simulation_object is ``False``
+
+    return:
+    -------------
+
+       An APSIMNGpy.core simulation object or the file path (str or Path) if simulation_object is ``False``
 
     Examples:
         >>> # Load the ``CoreModel`` object directly
@@ -1627,9 +1643,15 @@ apsimNGpy.core.structure
    Load specific crop default simulation model from the ``APSIM`` Example Folder.
 
     ``crop``: Crop to load (e.g., "Maize"). Not case-sensitive. defaults to ``Maize``
+
     ``set_wd``: Working directory to which the model should be copied.
+
     ``simulations_object``: If True, returns an APSIMNGpy.core simulation object; if False, returns the path to the simulation file.
-    :return: An APSIMNGpy.core simulation object or the file path (str or Path) if simulation_object is ``False``
+
+    return:
+    -------------
+
+       An APSIMNGpy.core simulation object or the file path (str or Path) if simulation_object is ``False``
 
     Examples:
         >>> # Load the ``CoreModel`` object directly
