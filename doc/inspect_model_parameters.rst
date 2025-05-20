@@ -61,7 +61,7 @@ Returns
 +--------------+----------------------------------------------------+
 | Soil models  | pandas.DataFrame with layered data                 |
 +--------------+----------------------------------------------------+
-| Report       | Dictionary with VariableNames`` and ``EventNames   |
+| Report       | Dictionary with VariableNames and EventNames       |
 +--------------+----------------------------------------------------+
 | Cultivar     | Dictionary of parameter strings                    |
 +--------------+----------------------------------------------------+
