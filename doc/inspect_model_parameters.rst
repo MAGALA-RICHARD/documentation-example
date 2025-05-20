@@ -228,7 +228,7 @@ Let's take a look at how it works.
         ... model_name='Clock', parameters='Start').year # gets the start year only
         1990
 
-# Inspect ``Solute`` models with ``Urea`` as an example. Others Solute include ``NO3``, ``NH4``
+# Inspect ``Solute`` models with ``Urea`` as an example. Others Solutes include ``NO3``, ``NH4``
 
         >>> model_instance.inspect_model_parameters('Solute', simulations='Simulation', model_name='Urea')
                Depth  InitialValues  SoluteBD  Thickness
