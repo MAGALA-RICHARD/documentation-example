@@ -29,6 +29,7 @@ Built on object-oriented principles, it provides:
    getting started
    Usage
    model inspection
+   inspect_model_parameters
    cli
    factorial_experiments
    api

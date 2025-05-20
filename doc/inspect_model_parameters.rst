@@ -1,52 +1,53 @@
-Inspect Model
+Inspect Model Parameters
 =============================
 
-After inspecting model paths and names, now we can confortably single out specifci models and inpect their paramters in details
+Once we have reviewed the structure of our APSIM model—including the model paths and component names—we are in a good position to explore model internals more deeply.
+This tutorial introduces the inspect_model_parameters method, which provides a unified way to extract parameters from a variety of APSIM model components.
 
-"""
-        Inspect the input parameters of a specific APSIM model type instance within selected simulations.
+🎯 What Is inspect_model_parameters?
+The inspect_model_parameters method simplifies parameter inspection by consolidating functionality that was previously spread across multiple methods such as:
 
-        This method consolidates functionality previously spread across `examine_management_info`, `read_cultivar_params`, and other inspectors,
-        allowing a unified interface for querying parameters of interest across a wide range of APSIM models.
+- examine_management_info
 
-        Parameters
-        ----------
-        model_type : str
-            The name of the model class to inspect (e.g., 'Clock', 'Manager', 'Physical', 'Chemical', 'Water', 'Solute').
-            Shorthand names are accepted (e.g., 'Clock', 'Weather') as well as fully qualified names (e.g., 'Models.Clock', 'Models.Climate.Weather').
-        simulations : Union[str, list]
-            A single simulation name or a list of simulation names within the APSIM context to inspect.
-        model_name : str
-            The name of the specific model instance within each simulation. For example, if `model_type='Solute'`,
-            `model_name` might be 'NH4', 'Urea', or another solute name.
-        parameters : Union[str, set, list, tuple], optional
-            A specific parameter or a collection of parameters to inspect. Defaults to `'all'`, in which case all accessible attributes are returned.
-            For layered models like Solute, valid parameters include `Depth`, `InitialValues`, `SoluteBD`, `Thickness`, etc.
-        **kwargs : dict
-            Reserved for future compatibility; currently unused.
+- read_cultivar_params
 
-        Returns
-        -------
-        Union[dict, list, pd.DataFrame, Any]
-            The format depends on the model type:
-            - Weather: file path(s) as string(s)
-            - Clock: dictionary with start and end datetime objects (or a single datetime if only one is requested)
-            - Manager: dictionary of script parameters
-            - Soil-related models: pandas DataFrame of layered values
-            - Report: dictionary with `VariableNames` and `EventNames`
-            - Cultivar: dictionary of parameter strings
+- Various model-specific inspectors
 
-        Raises
-        ------
-        ValueError
-            If the specified model or simulation is not found or arguments are invalid.
-        NotImplementedError
-            If the model type is unsupported by the current interface.
+Function signature
+----------------------------------
+.. code-block:: python
 
-        Requirements
-        ------------
-        - APSIM Next Generation Python bindings (`apsimNGpy`)
-        - Python 3.10+
+    inspect_model_parameters(
+        model_type: str,
+        simulations: Union[str, list],
+        model_name: str,
+        parameters: Union[str, set, list, tuple] = 'all',
+        **kwargs
+        ) -> Union[dict, list, pd.DataFrame, Any]
+
+Parameters
+ ----------------------------
+model_type (str):
+The type or class of the model to inspect.
+Examples:
+
+Shorthand: 'Clock', 'Weather'
+
+Fully qualified: 'Models.Clock', 'Models.Climate.Weather'
+
+simulations (str or list):
+One or more simulation names from your APSIM file to query. defaults to all
+
+model_name (str):
+The instance name of the model within the simulation.
+Example: If model_type='Solute', this could be 'NO3', 'NH4', or 'Urea'. if the model was renamed, the new name is the model_name
+
+parameters (str, set, list, tuple, optional):
+Specific parameter(s) to retrieve. Defaults to 'all', which returns all available attributes.
+Common examples for layered models like Solute: Depth, InitialValues, SoluteBD, Thickness.
+
+**kwargs:
+Reserved for future use (currently unused).
 
         Examples
         --------
