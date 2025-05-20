@@ -587,12 +587,6 @@ CoreModel
         -------
             APSIM Models.Soils.Physical object
 
-.. function:: apsimNGpy.core.core.CoreModel.extract_soil_property_by_path(self, path: str, str_fmt='.', index: list = None)
-
-   path to the soil property should be Simulation.soil_child.parameter_name e.g., = 'Simulation.Organic.Carbon.
-        @param: index(list), optional position of the soil property to a return
-        @return: list
-
 .. function:: apsimNGpy.core.core.CoreModel.extract_start_end_years(self, simulations: str = None)
 
    Get simulation dates. deprecated
@@ -716,6 +710,10 @@ CoreModel
          ['.Simulations.Simulation.Clock']
 
          >>> model.inspect_model('IPlant')
+         ['.Simulations.Simulation.Field.Maize']
+
+         >>> model.inspect_model('Weather') # inspects the weather module
+         ['.Simulations.Simulation.Weather']
 
 .. function:: apsimNGpy.core.core.CoreModel.inspect_model_parameters(self, model_type: Union[<module 'Models'>, str], model_name: str, simulations: Union[str, list] = 'all', parameters: Union[list, set, tuple, str] = 'all', **kwargs)
 
