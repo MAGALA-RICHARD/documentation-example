@@ -258,7 +258,8 @@ Extract  ``End`` year only::
         >>> model_instance.inspect_model_parameters('Clock', simulations='Simulation',
         ... model_name='Clock', parameters='End').year # gets the start year only
         2000
-For this model_type, argument values to parameters can be start_data, end, End, Start, end_date, start. all we return the same thing respectively
+
+For this model_type, argument values to parameters can be start_date, end, End, Start, end_date, start. All will return the same thing, respectively
 An example::
 
         >>> model_instance.inspect_model_parameters('Clock', simulations='Simulation',
