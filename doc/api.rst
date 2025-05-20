@@ -746,38 +746,43 @@ CoreModel
         ``model_type`` : str
             The name of the model class to inspect (e.g., 'Clock', 'Manager', 'Physical', 'Chemical', 'Water', 'Solute').
             Shorthand names are accepted (e.g., 'Clock', 'Weather') as well as fully qualified names (e.g., 'Models.Clock', 'Models.Climate.Weather').
+
         ``simulations`` : Union[str, list]
             A single simulation name or a list of simulation names within the APSIM context to inspect.
+
         ``model_name`` : str
             The name of the specific model instance within each simulation. For example, if `model_type='Solute'`,
             `model_name` might be 'NH4', 'Urea', or another solute name.
+
         ``parameters`` : Union[str, set, list, tuple], optional
             A specific parameter or a collection of parameters to inspect. Defaults to `'all'`, in which case all accessible attributes are returned.
             For layered models like Solute, valid parameters include `Depth`, `InitialValues`, `SoluteBD`, `Thickness`, etc.
-        **kwargs : dict
+
+        ``kwargs`` : dict
             Reserved for future compatibility; currently unused.
 
-        Returns
+        ``Returns``
         -------
-        Union[dict, list, pd.DataFrame, Any]
-        The format depends on the model type:
-        - ``Weather``: file path(s) as string(s)
+            Union[dict, list, pd.DataFrame, Any]
+            The format depends on the model type:
+            ``Weather``: file path(s) as string(s)
 
-        - ``Clock``: dictionary with start and end datetime objects (or a single datetime if only one is requested)
+        - ``Clock``: dictionary with start and end datetime objects (or a single datetime if only one is requested).
 
-        - ``Manager``: dictionary of script parameters
+        - ``Manager``: dictionary of script parameters.
 
-        - ``Soil-related`` models: pandas DataFrame of layered values
+        - ``Soil-related`` models: pandas DataFrame of layered values.
 
-        - ``Report``: dictionary with `VariableNames` and `EventNames`
+        - ``Report``: dictionary with `VariableNames` and `EventNames`.
 
-        - ``Cultivar``: dictionary of parameter strings
+        - ``Cultivar``: dictionary of parameter strings.
 
         Raises
         ------
-        ValueError
+        ``ValueError``
             If the specified model or simulation is not found or arguments are invalid.
-        NotImplementedError
+
+        ``NotImplementedError``
             If the model type is unsupported by the current interface.
 
 
@@ -1654,190 +1659,6 @@ apsimNGpy.core.runner
         >>> from apsimNGpy.core.base_data import load_default_simulations
         >>> filep =load_default_simulations(simulations_object= False)# this is just an example perhaps you need to pass a lower verion file because this one is extracted from thecurrent model as the excutor
         >>> upgrade_file =upgrade_apsim_file(filep, verbose=False)
-
-apsimNGpy.core.structure 
----------------------------------------
-
-.. function:: apsimNGpy.core.structure.add_model(_model, model_type, adoptive_parent, rename=None, adoptive_parent_name=None, verbose=True, **kwargs)
-
-   Add a model to the Models Simulations NameSpace. some models are tied to specific models, so they can only be added
-    to that models an example, we cant add Clock model to Soil Model
-    @param _model: apsimNGpy.core.apsim.ApsimModel object
-    @param model_name: string name of the model
-    @param where: loction along the Models Simulations nodes or children to add the model e.g at Models.Core.Simulation,
-    @param adoptive_parent_name: importatn to specified the actual final destination, if there are more than one simulations
-    @return: none, model are modified in place, so the modified object has the same reference pointer as the _model
-        Example:
-     >>> from apsimNGpy import core
-     >>> model =core.base_data.load_default_simulations(crop = "Maize")
-     >>> remove_model(model,Models.Clock) # first delete model
-     >>> add_model(model, Models.Clock, adoptive_parent = Models.Core.Simulation, rename = 'Clock_replaced', verbose=False)
-
-.. function:: apsimNGpy.core.structure.find_model(model_name: str, model_namespace=None)
-
-   Find a model from the Models namespace and return its path.
-
-    Args:
-        model_name (str): The name of the model to find.
-        model_namespace (object, optional): The root namespace (defaults to Models).
-        path (str, optional): The accumulated path to the model.
-
-    Returns:
-        str: The full path to the model if found, otherwise None.
-
-    Example:
-        >>> find_model("Weather")  # doctest: +SKIP
-        'Models.Climate.Weather'
-        >>> find_model("Clock")  # doctest: +SKIP
-        'Models.Clock'
-
-.. function:: apsimNGpy.core.base_data.load_default_simulations(crop: str = 'Maize', set_wd: [<class 'str'>, <class 'pathlib.Path'>] = None, simulations_object: bool = True, **kwargs)
-
-   Load specific crop default simulation model from the ``APSIM`` Example Folder.
-
-    ``crop``: Crop to load (e.g., "Maize"). Not case-sensitive. defaults to ``Maize``
-
-    ``set_wd``: Working directory to which the model should be copied.
-
-    ``simulations_object``: If True, returns an APSIMNGpy.core simulation object; if False, returns the path to the simulation file.
-
-    ``Returns``:
-     An APSIMNGpy.core simulation object or the file path (str or Path) if simulation_object is ``False``
-
-     Examples:
-        >>> # Load the ``CoreModel`` object directly
-        >>> model = load_default_simulations('Maize', simulations_object=True)
-        >>> # Run the ``model``
-        >>> model.run()
-        >>> # Collect and print the results
-        >>> df = model.results
-        >>> print(df)
-             SimulationName  SimulationID  CheckpointID  ... Maize.Total.Wt     Yield   Zone
-        0     Simulation             1             1  ...       1728.427  8469.616  Field
-        1     Simulation             1             1  ...        920.854  4668.505  Field
-        2     Simulation             1             1  ...        204.118   555.047  Field
-        3     Simulation             1             1  ...        869.180  3504.000  Field
-        4     Simulation             1             1  ...       1665.475  7820.075  Field
-        5     Simulation             1             1  ...       2124.740  8823.517  Field
-        6     Simulation             1             1  ...       1235.469  3587.101  Field
-        7     Simulation             1             1  ...        951.808  2939.152  Field
-        8     Simulation             1             1  ...       1986.968  8379.435  Field
-        9     Simulation             1             1  ...       1689.966  7370.301  Field
-        [10 rows x 16 columns]
-
-        # Return only the set_wd
-        >>> model = load_default_simulations(crop='Maize', simulations_object=False)
-        >>> print(isinstance(model, (str, Path)))
-        True
-        @param experiment:
-
-.. function:: apsimNGpy.core.structure.remove_model(_model, model_type, model_name=None)
-
-   Remove a model from the Models Simulations NameSpace
-    @param model_type: e.g., Models.Clock, Models
-    @param _model: apsimNgpy.core.model model object
-    @param model_name: name of the model e.g., Clock2. If we are sure that only one clock exists or then we dont need to
-    specify the name @return: None
-    Example:
-       >>> from apsimNGpy import core
-       >>> from apsimNGpy.core.core import Models
-       >>> model = core.base_data.load_default_simulations(crop = 'Maize')
-       >>> model.remove_model(Models.Clock) #deletes the clock node
-       >>> model.remove_model(Models.Climate.Weather) #deletes the weather node
-
-.. class:: apsimNGpy.core.apsimApsimModel
-
-   Main class for apsimNGpy modules.
-    It inherits from the CoreModel class and therefore has access to a repertoire of methods from it.
-
-    This implies that you can still run the model and modify parameters as needed.
-    Example:
-        >>> from apsimNGpy.core.apsim import ApsimModel
-        >>> from apsimNGpy.core.base_data import load_default_simulations
-        >>> path_model = load_default_simulations(crop='Maize', simulations_object=False)
-        >>> model = ApsimModel(path_model, set_wd=Path.home())# replace with your path
-        >>> model.run(report_name='Report') # report is the default replace as needed
-
-   .. method::apsimNGpy.core.apsim.ApsimModel.adjust_dul(self, simulations: Union[tuple, list] = None)
-
-      - This method checks whether the soil SAT is above or below DUL and decreases DUL  values accordingly
-        - Need to cal this method everytime SAT is changed, or DUL is changed accordingly
-        :param simulations: str, name of the simulation where we want to adjust DUL and SAT according
-        :return:
-        model object
-
-   .. method::apsimNGpy.core.apsim.ApsimModel.auto_gen_thickness_layers(self, max_depth, n_layers=10, thin_layers=3, thin_thickness=100, growth_type='linear', thick_growth_rate=1.5)
-
-      Generate layer thicknesses from surface to depth, starting with thin layers and increasing thickness.
-
-        Args:
-            max_depth (float): Total depth in mm.
-            n_layers (int): Total number of layers.
-            thin_layers (int): Number of initial thin layers.
-            thin_thickness (float): Thickness of each thin layer.
-            growth_type (str): 'linear' or 'exponential'.
-            thick_growth_rate (float): Growth factor for thick layers (e.g., +50% each layer if exponential).
-
-        Returns:
-            List[float]: List of layer thicknesses summing to max_depth.
-
-   .. method::apsimNGpy.core.apsim.ApsimModel.replace_downloaded_soils(self, soil_tables: Union[dict, list], simulation_names: Union[tuple, list], **kwargs)
-
-      Updates soil parameters and configurations for downloaded soil data in simulation models.
-
-            This method adjusts soil physical and organic parameters based on provided soil tables and applies these
-            adjustments to specified simulation models. Optionally, it can adjust the Radiation Use Efficiency (RUE)
-            based on a Carbon to Sulfur ratio (CSR) sampled from the provided soil tables.
-
-            Parameters:
-                 :param soil_tables (list): A list containing soil data tables. Expected to contain: see the naming
-            convention in the for APSIM - [0]: DataFrame with physical soil parameters. - [1]: DataFrame with organic
-            soil parameters. - [2]: DataFrame with crop-specific soil parameters. - RUE adjustment. - simulation_names (list of str): Names or identifiers for the simulations to
-            be updated.s
-
-
-            Returns:
-            - self: Returns an instance of the class for chaining methods.
-
-            This method directly modifies the simulation instances found by `find_simulations` method calls,
-            updating physical and organic soil properties, as well as crop-specific parameters like lower limit (LL),
-            drain upper limit (DUL), saturation (SAT), bulk density (BD), hydraulic conductivity at saturation (KS),
-            and more based on the provided soil tables.
-
-    ->> key-word argument
-             adjust_rue: Boolean, adjust the radiation use efficiency
-            'set_sw_con': Boolean, set the drainage coefficient for each layer
-            adJust_kl:: Bollean, adjust, kl based on productivity index
-            'CultvarName': cultivar name which is in the sowing module for adjusting the rue
-            tillage: specify whether you will be carried to adjust some physical parameters
-
-   .. method::apsimNGpy.core.apsim.ApsimModel.run_edited_file(self, table_name=None)
-
-      :param table_name (str): repot table name in the database
-
-   .. method::apsimNGpy.core.apsim.ApsimModel.spin_up(self, report_name: str = 'Report', start=None, end=None, spin_var='Carbon', simulations=None)
-
-      Perform a spin-up operation on the aPSim model.
-
-        This method is used to simulate a spin-up operation in an aPSim model. During a spin-up, various soil properties or
-        variables may be adjusted based on the simulation results.
-
-        Parameters:
-        ----------
-        report_name : str, optional (default: 'Report')
-            The name of the aPSim report to be used for simulation results.
-        start : str, optional
-            The start date for the simulation (e.g., '01-01-2023'). If provided, it will change the simulation start date.
-        end : str, optional
-            The end date for the simulation (e.g., '3-12-2023'). If provided, it will change the simulation end date.
-        spin_var : str, optional (default: 'Carbon'). the difference between the start and end date will determine the spin-up period
-            The variable representing the child of spin-up operation. Supported values are 'Carbon' or 'DUL'.
-
-        Returns:
-        -------
-        self : ApsimModel
-            The modified ApsimModel object after the spin-up operation.
-            you could call save_edited file and save it to your specified location, but you can also proceed with the simulation
 
 apsimNGpy.core_utils.database_utils 
 --------------------------------------------------
