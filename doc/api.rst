@@ -703,7 +703,7 @@ CoreModel
         Return: list[str]: list of all full paths or names of the model relative to the parent simulations node 
 
 
-        Example::
+        Example:
 
         >>> from apsimNGpy.core import base_data
         >>> from apsimNGpy.core.core import Models
