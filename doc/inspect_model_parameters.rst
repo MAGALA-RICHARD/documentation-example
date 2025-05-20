@@ -48,10 +48,6 @@ Common examples for layered models like Solute: Depth, InitialValues, SoluteBD, 
 **kwargs:
 Reserved for future use (currently unused).
 
-Returns
----------------------------------
-
-
 +--------------+----------------------------------------------------+
 | Model Type   | Return Format                                      |
 +==============+====================================================+
