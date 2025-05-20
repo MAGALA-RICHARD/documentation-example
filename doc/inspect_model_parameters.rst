@@ -90,7 +90,7 @@ Let's take a look at how it works.
         [7 rows x 9 columns]
 
 
-# inspect soil ``Physical`` profile
+# Inspect soil ``Physical`` profile
 
         >>> model_instance.inspect_model_parameters('Physical', simulations='Simulation', model_name='Physical')
             AirDry        BD       DUL  ...        SWmm Thickness  ThicknessCumulative
@@ -226,7 +226,7 @@ Let's take a look at how it works.
         ... model_name='Clock', parameters='Start').year # gets the start year only
         1990
 
-# Inspect ``Solute`` models
+# Inspect ``Solute`` models with ``Urea`` as an example
 
         >>> model_instance.inspect_model_parameters('Solute', simulations='Simulation', model_name='Urea')
                Depth  InitialValues  SoluteBD  Thickness
@@ -237,6 +237,8 @@ Let's take a look at how it works.
         4   900-1200            0.0  1.173012      300.0
         5  1200-1500            0.0  1.162873      300.0
         6  1500-1800            0.0  1.187495      300.0
+
+# Inspect NH4 ``InitialValues``
 
         >>> model_instance.inspect_model_parameters('Solute', simulations='Simulation', model_name='NH4',
         ... parameters='InitialValues')
