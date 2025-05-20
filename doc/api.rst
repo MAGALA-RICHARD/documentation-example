@@ -130,38 +130,40 @@ CoreModel
 .. function:: apsimNGpy.core.core.CoreModel.add_crop_replacements(self, _crop: str)
 
    Adds a replacement folder as a child of the simulations.
+
         Useful when you intend to edit cultivar **parameters**.
 
         **Args:**
-            - **_crop** (*str*): Name of the crop to be added to the replacement folder.
+            ``_crop`` (*str*): Name of the crop to be added to the replacement folder.
 
-        **Returns:**
+        ``Returns:``
             - *ApsimModel*: An instance of `apsimNGpy.core.core.apsim.ApsimModel` or `CoreModel`.
 
-        **Raises:**
+        ``Raises:``
             - *ValueError*: If the specified crop is not found.
 
 .. function:: apsimNGpy.core.core.CoreModel.add_db_table(self, variable_spec: list = None, set_event_names: list = None, rename: str = 'my_table', simulation_name: Union[str, list, tuple] = None)
 
-   Adds a new data base table, which APSIM calls Report (Models.Report) to the Simulation under a Simulation Zone.
+   Adds a new data base table, which ``APSIM`` calls ``Report`` (Models.Report) to the ``Simulation`` under a Simulation Zone.
 
-        This is different from `add_report_variable` in that it creates a new, named report
+        This is different from ``add_report_variable`` in that it creates a new, named report
         table that collects data based on a given list of variables and events.
 
         :Args:
-            variable_spec (list or str): A list of APSIM variable paths to include in the report table.
+            ``variable_spec`` (list or str): A list of APSIM variable paths to include in the report table.
                                          If a string is passed, it will be converted to a list.
-            set_event_names (list or str, optional): A list of APSIM events that trigger the recording of variables.
+            ``set_event_names`` (list or str, optional): A list of APSIM events that trigger the recording of variables.
                                                      Defaults to ['[Clock].EndOfYear'] if not provided. other examples include '[Clock].StartOfYear', '[Clock].EndOfsimulation',
                                                      '[crop_name].Harvesting' etc.,,
-            rename (str): The name of the report table to be added. Defaults to 'my_table'.
+            ``rename`` (str): The name of the report table to be added. Defaults to 'my_table'.
 
-            simulation_name (str,tuple, or list, Optional): if specified, the name of the simulation will be searched and will become the parent candidate for the report table.
+            ``simulation_name`` (str,tuple, or list, Optional): if specified, the name of the simulation will be searched and will become the parent candidate for the report table.
                             If it is none, all Simulations in the file will be updated with the new db_table
 
         :Raises:
-            ValueError: If no variable_spec is provided.
-            RuntimeError: If no Zone is found in the current simulation scope.
+            ``ValueError``: If no variable_spec is provided.
+            ``RuntimeError``: If no Zone is found in the current simulation scope.
+
         : Example:
                >>> from apsimNGpy import core
                >>> model = core.base_data.load_default_simulations(crop = 'Maize')
@@ -179,13 +181,12 @@ CoreModel
         Parameters:
         ----------
 
-        :specification: *(str), required*
-
+        ``specification``: *(str), required*
         A specification can be:
                 - 1. multiple values or categories e.g., "[Sow using a variable rule].Script.Population =4, 66, 9, 10"
                 - 2. Range of values e.g, "[Fertilise at sowing].Script.Amount = 0 to 200 step 20",
-        :factor_name: *(str), required*
 
+        ``factor_name``: *(str), required*
         - expected to be the user-desired name of the factor being specified e.g., population
 
         Example:
@@ -379,17 +380,17 @@ CoreModel
 
 .. function:: apsimNGpy.core.core.CoreModel.create_experiment(self, permutation: bool = True, base_name: str = None, **kwargs)
 
-   Initialize an Experiment instance, adding the necessary models and factors.
+   Initialize an ``Experiment`` instance, adding the necessary models and factors.
 
         Args:
 
-            **kwargs: Additional parameters for CoreModel.
+            ``kwargs``: Additional parameters for CoreModel.
 
-            :param permutation (bool). If True, the experiment uses a permutation node to run unique combinations of the specified
+            ``permutation`` (bool). If True, the experiment uses a permutation node to run unique combinations of the specified
             factors for the simulation. For example, if planting population and nitrogen fertilizers are provided,
             each combination of planting population level and fertilizer amount is run as an individual treatment.
 
-           :param  base_name (str, optional): The name of the base simulation to be moved into the experiment setup. if not
+           ``base_name`` (str, optional): The name of the base simulation to be moved into the experiment setup. if not
             provided, it is expected to be Simulation as the default
 
 .. function:: apsimNGpy.core.core.CoreModel.edit_cultivar(self, *, CultivarName: str, commands: str, values: Any, **kwargs)
@@ -672,8 +673,8 @@ CoreModel
 
 .. function:: apsimNGpy.core.core.CoreModel.inspect_file(self, cultivar=False, **kwargs)
 
-   Inspect the file by calling inspect_model() through get_model_paths.
-        This method is important in inspecting the whole file and also getting the scripts paths
+   Inspect the file by calling ``inspect_model()`` through ``get_model_paths.``
+        This method is important in inspecting the ``whole file`` and also getting the ``scripts paths``
 
 .. function:: apsimNGpy.core.core.CoreModel.inspect_model(self, model_type: Union[str, <module 'Models'>], fullpath=True, **kwargs)
 
@@ -1081,38 +1082,42 @@ CoreModel
 
 .. function:: apsimNGpy.core.core.CoreModel.replace_soil_property_values(self, *, parameter: str, param_values: list, soil_child: str, simulations: list = None, indices: list = None, crop=None, **kwargs)
 
-   Replaces values in any soil property array. The soil property array
-        :param parameter: str: parameter name e.g., NO3, 'BD'
+   Replaces values in any soil property array. The soil property array.
 
-        :param param_values: list or tuple: values of the specified soil property name to replace
+        ``parameter``: str: parameter name e.g., NO3, 'BD'
 
-        :param soil_child: str: sub child of the soil component e.g., organic, physical etc.
+        ``param_values``: list or tuple: values of the specified soil property name to replace
 
-        :param simulations: list: list of simulations to where the child is found if
-        not found, all current simulations will receive the new values, thus defaults to None
+        ``soil_child``: str: sub child of the soil component e.g., organic, physical etc.
 
-        :param indices: list. Positions in the array which will be replaced. Please note that unlike C#, python satrt counting from 0
+        ``simulations``: list: list of simulations to where the child is found if
+          not found, all current simulations will receive the new values, thus defaults to None
 
-        :crop (str, optional): string for soil water replacement. Default is None
+        ``indices``: list. Positions in the array which will be replaced. Please note that unlike C#, python satrt counting from 0
+
+        ``crop`` (str, optional): string for soil water replacement. Default is None
 
 .. function:: apsimNGpy.core.core.CoreModel.replace_soils_values_by_path(self, node_path: str, indices: list = None, **kwargs)
 
-   set the new values of the specified soil object by path
+   set the new values of the specified soil object by path. only layers parameters are supported.
 
-        unfortunately, it handles one soil child at a time e.g., Physical at a go
+        Unfortunately, it handles one soil child at a time e.g., ``Physical`` at a go
+
         Args:
 
-        node_path (str, required): complete path to the soil child of the Simulations e.g.,Simulations.Simulation.Field.Soil.Organic.
+        ``node_path`` (str, required): complete path to the soil child of the Simulations e.g.,Simulations.Simulation.Field.Soil.Organic.
          Use`copy path to node fucntion in the GUI to get the real path of the soil node.
 
-        indices (list, optional): defaults to none but could be the position of the replacement values for arrays
+        ``indices`` (list, optional): defaults to none but could be the position of the replacement values for arrays
 
-        kwargs (key word arguments): This carries the parameter and the values e.g., BD = 1.23 or BD = [1.23, 1.75]
-         if the child is Physical, or Carbon if the child is Organic
+        ``kwargs`` (key word arguments): This carries the parameter and the values e.g., BD = 1.23 or BD = [1.23, 1.75]
+         if the child is ``Physical``, or ``Carbon`` if the child is ``Organic``
 
-         raises raise value error if none of the key word arguments, representing the paramters are specified
+         ``raises``
+         ``ValueError`` if none of the key word arguments, representing the paramters are specified
+
          returns:
-            - apsimNGpy.core.APSIMNG object and if the path specified does not translate to the child object in
+            - ``apsimNGpy.core.CoreModel`` object and if the path specified does not translate to the child object in
          the simulation
 
          Example:
@@ -1120,7 +1125,7 @@ CoreModel
 
               >>> model = load_default_simulations(crop ='Maize', simulations_object=False)# initiate model
 
-              >>> model = CoreModel(model) # replace with your intended file path
+              >>> model = CoreModel(model) # ``replace`` with your intended file path
               >>> model.replace_soils_values_by_path(node_path='.Simulations.Simulation.Field.Soil.Organic', indices=[0], Carbon =1.3)
 
               >>> sv= model.get_soil_values_by_path('.Simulations.Simulation.Field.Soil.Organic', 'Carbon')
@@ -1216,14 +1221,19 @@ CoreModel
 
 .. function:: apsimNGpy.core.core.CoreModel.set_categorical_factor(self, factor_path: str, categories: Union[list, tuple], factor_name: str = None)
 
-   wraps around add_factor() to add a continuous factor, just for clarity
+   wraps around ``add_factor()`` to add a continuous factor, just for clarity.
+
          parameters
          __________________________
-        :param factor_path: (str, required): path of the factor definition relative to its child node "[Fertilise at sowing].Script.Amount"
-        :param factor_name: (str) name of the factor.
-        :param categories: (tuple, list, required): multiple values of a factor
-        :returns:
-          ApsimModel or CoreModel: An instance of `apsimNGpy.core.core.apsim.ApsimModel` or `CoreModel`.
+        ``factor_path``: (str, required): path of the factor definition relative to its child node "[Fertilise at sowing].Script.Amount"
+
+        ``factor_name``: (str) name of the factor.
+
+        ``categories``: (tuple, list, required): multiple values of a factor
+
+        ``returns``:
+          ``ApsimModel`` or ``CoreModel``: An instance of ``apsimNGpy.core.core.apsim.ApsimModel`` or ``CoreModel``.
+
         Example:
             >>> from apsimNGpy.core import base_data
             >>> apsim = base_data.load_default_simulations(crop='Maize')
@@ -1235,15 +1245,19 @@ CoreModel
    Wraps around `add_factor` to add a continuous factor, just for clarity
 
         Args:
-            :param factor_path: (str): The path of the factor definition relative to its child node,
+            ``factor_path``: (str): The path of the factor definition relative to its child node,
                 e.g., `"[Fertilise at sowing].Script.Amount"`.
-            :param factor_name: (str): The name of the factor.
-            :param lower_bound: (int or float): The lower bound of the factor.
-            :param upper_bound: (int or float): The upper bound of the factor.
-            :param interval: (int or float): The distance between the factor levels.
 
-        Returns:
-            ApsimModel or CoreModel: An instance of `apsimNGpy.core.core.apsim.ApsimModel` or `CoreModel`.
+            ``factor_name``: (str): The name of the factor.
+
+            ``lower_bound``: (int or float): The lower bound of the factor.
+
+            ``upper_bound``: (int or float): The upper bound of the factor.
+
+            ``interval``: (int or float): The distance between the factor levels.
+
+        ``Returns``:
+            ``ApsimModel`` or ``CoreModel``: An instance of `apsimNGpy.core.core.apsim.ApsimModel` or `CoreModel`.
         Example:
             >>> from apsimNGpy.core import base_data
             >>> apsim = base_data.load_default_simulations(crop='Maize')
