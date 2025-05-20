@@ -1020,12 +1020,18 @@ CoreModel
 
 .. function:: apsimNGpy.core.core.CoreModel.rename_model(self, model_type: <module 'Models'>, old_model_name: str, new_model_name: str, simulations=None)
 
-   give new name to a model in the simulations
-        @param model_type: (Models) Models types e.g., Models.Clock
-        @param old_model_name: (str) current model name
-        @param new_model_name: (str) new model name
-        @param simulation: (str, optional) defaults to all simulations
-        @return: None
+   give new name to a model in the simulations.
+
+        ``model_type``: (Models) Models types e.g., Models.Clock.
+
+        ``old_model_name``: (str) current model name.
+
+        ``new_model_name``: (str) new model name.
+
+        ``simulation``: (str, optional) defaults to all simulations.
+
+        ``returns``: None
+
         Example;
                >>> from apsimNGpy import core
                >>> from apsimNGpy.core.core import Models
@@ -1103,9 +1109,9 @@ CoreModel
 
 .. function:: apsimNGpy.core.core.CoreModel.replicate_file(self, k: int, path: os.PathLike = None, suffix: str = 'replica')
 
-   Replicates a file 'k' times.
+   Replicates a file ``k`` times.
 
-        If a path is specified, the copies will be placed in that dir_path with incremented filenames.
+        If a ``path`` is specified, the copies will be placed in that dir_path with incremented filenames.
 
         If no path is specified, copies are created in the same dir_path as the original file, also with incremented filenames.
 
