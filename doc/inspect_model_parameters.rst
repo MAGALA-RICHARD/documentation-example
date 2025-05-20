@@ -53,17 +53,17 @@ Returns
 +--------------+----------------------------------------------------+
 | Model Type   | Return Format                                      |
 +==============+====================================================+
-| Weather      | File path(s) as string(s)                          |
+| Weather      | File ``path(s)`` as string(s)                      |
 +--------------+----------------------------------------------------+
 | Clock        | Dictionary with ``Start`` and ``End`` datetimes    |
 +--------------+----------------------------------------------------+
-| Manager      | Dictionary of script parameters                    |
+| Manager      | ``Dictionary`` of script parameters                |
 +--------------+----------------------------------------------------+
-| Soil models  | pandas.DataFrame with layered data                 |
+| Soil models  | ``pandas.DataFrame`` with layered data             |
 +--------------+----------------------------------------------------+
-| Report       | Dictionary with VariableNames and EventNames       |
+| Report       | ``Dictionary`` with VariableNames and EventNames   |
 +--------------+----------------------------------------------------+
-| Cultivar     | Dictionary of parameter strings                    |
+| Cultivar     | ``Dictionary`` of parameter strings                |
 +--------------+----------------------------------------------------+
 
 
