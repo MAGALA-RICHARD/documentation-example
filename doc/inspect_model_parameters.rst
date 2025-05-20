@@ -4,7 +4,8 @@ Inspect Model Parameters
 Once we have reviewed the structure of our APSIM model—including the model paths and component names—we are in a good position to explore model internals more deeply.
 This tutorial introduces the inspect_model_parameters method, which provides a unified way to extract parameters from a variety of APSIM model components.
 
-🎯 What Is inspect_model_parameters?
+What Is inspect_model_parameters?
+-------------------------------
 The inspect_model_parameters method simplifies parameter inspection by consolidating functionality that was previously spread across multiple methods such as:
 
 - examine_management_info
