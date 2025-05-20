@@ -143,7 +143,8 @@ Inspect only few selected parameters ``'Carbon'``, ``'CNR'``::
         5    0.12  12.0
         6    0.12  12.0
 
-# Inspect ``Report`` module attributes. Report attributes are returned in two categories;
+
+Inspect ``Report`` module attributes. Report attributes are returned in two categories;
  1. 'EventNames': used for triggering recording or reporting events
  2. 'VariableNames': actual variable  paths::
 
