@@ -269,11 +269,11 @@ CoreModel
 
         Parameters
         ----------
-        command : str
+        ``command`` : str
             The new report string that contains variable names.
-        report_name : str
+        ``report_name`` : str
             The name of the APSIM report to update defaults to Report.
-        simulations : list of str, optional
+        ``simulations`` : list of str, optional
             A list of simulation names to update. If `None`, the function will
             update the report for all simulations.
 
@@ -581,8 +581,8 @@ CoreModel
    Extracts soil physical parameters in the simulation
 
         Args:
-            parameter (_string_): string e.g. DUL, SAT
-            simulations (string, optional): Targeted simulation name. Defaults to None.
+            ``parameter`` (_string_): string e.g. DUL, SAT
+            ``simulations`` (string, optional): Targeted simulation name. Defaults to None.
         ---------------------------------------------------------------------------
         returns an array of the parameter values
 
@@ -592,7 +592,7 @@ CoreModel
 
         Parameters
         ----------
-        :simulation, optional
+        ``simulation``, optional
             Simulation name, if `None` use the first simulation.
         Returns
         -------
@@ -663,7 +663,7 @@ CoreModel
 
         Parameters
         ----------
-        simulation, optional
+        ``simulation``, optional
             Simulation name, if `None` use the first simulation.
         Returns
         -------
@@ -679,22 +679,26 @@ CoreModel
 
    Inspect the model types and returns the model paths or names. usefull if you want to identify the path to the
         model for editing the model.
-        :param model_type: (Models) e.g. Models.Clock will return all fullpath or names
-        of models in the type Clock -Models.Manager returns information about the manager scripts in simulations. strings are allowed
-        to, in the case you may not need to import the global namespace, Models. e.g 'Models.Clock' will still work well.
 
-        -Models.Core.Simulation returns information about the simulation -Models.Climate.Weather returns a list of
-        paths or names pertaining to weather models -Models.Core.IPlant  returns a list of paths or names pertaining
-        to all crops models available in the simulation :param  fullpath: (bool) return the full path of the model
+        ``model_type``: (Models) e.g. ``Models.Clock`` or just ``'Clock'`` will return all fullpath or names
+            of models in the type Clock ``-Models.Manager`` returns information about the manager scripts in simulations. strings are allowed
+            to, in the case you may not need to import the global namespace, Models. e.g ``Models.Clock`` will still work well.
+            ``-Models.Core.Simulation`` returns information about the simulation -Models.Climate.Weather returns a list of
+            paths or names pertaining to weather models ``-Models.Core.IPlant``  returns a list of paths or names pertaining
+            to all crops models available in the simulation.
+
+        ``fullpath``: (bool) return the full path of the model
         relative to the parent simulations node. please note the difference between simulations and simulation.
-        :return: list[str]: list of all full paths or names of the model relative to the parent simulations node 
+
+        Return: list[str]: list of all full paths or names of the model relative to the parent simulations node 
+
 
         Example:
 
         >>> from apsimNGpy.core import base_data
         >>> from apsimNGpy.core.core import Models
 
-        # load default maize module
+        # load default ``maize`` module
 
         >>> model = base_data.load_default_simulations(crop ='maize')
         >>> model.inspect_model(Models.Manager, fullpath=True)
