@@ -222,6 +222,8 @@ Let's take a look at how it works.
         ... model_name='Clock', parameters='End')
         datetime.datetime(2000, 12, 31, 0, 0)
 
+# Extract ``Start`` year or ``End`` year only. let's see with ``start`` year as an example
+
         >>> model_instance.inspect_model_parameters('Clock', simulations='Simulation',
         ... model_name='Clock', parameters='Start').year # gets the start year only
         1990
