@@ -1373,15 +1373,13 @@ apsimNGpy.core.base_data
 
    Load default simulation model from ``APSIM`` Example Folder.
 
-    ``method``: string of the sentitivity child to load e.g. ``"Morris"`` or ``Sobol``, not case-sensitive
+    ``method``: string of the sentitivity child to load e.g. ``"Morris"`` or ``Sobol``, not case-sensitive.
 
-    ``set_wd``: string of the set_wd to copy the model
+    ``set_wd``: string of the set_wd to copy the model.
 
-    ``simulations_object``: bool to specify whether to return apsimNGp.core simulation object defaults to ``True``
+    ``simulations_object``: bool to specify whether to return apsimNGp.core simulation object defaults to ``True``.
 
-    ``Return``
-
-    apsimNGpy.core.CoreModel simulation objects
+    ``Returns:`` apsimNGpy.core.CoreModel simulation objects
 
      Example
      -----------------
@@ -1390,7 +1388,7 @@ apsimNGpy.core.base_data
 
     >>> morris_model = load_default_sensitivity_model(method = 'Morris', simulations_object=True)
 
-    # >>> morris_model.run()
+    >>> morris_model.run()
 
 .. function:: apsimNGpy.core.base_data.load_default_simulations(crop: str = 'Maize', set_wd: [<class 'str'>, <class 'pathlib.Path'>] = None, simulations_object: bool = True, **kwargs)
 
@@ -1402,8 +1400,7 @@ apsimNGpy.core.base_data
 
     ``simulations_object``: If True, returns an APSIMNGpy.core simulation object; if False, returns the path to the simulation file.
 
-     Returns
-     --------
+    ``Returns``:
      An APSIMNGpy.core simulation object or the file path (str or Path) if simulation_object is ``False``
 
      Examples:
@@ -1704,8 +1701,7 @@ apsimNGpy.core.structure
 
     ``simulations_object``: If True, returns an APSIMNGpy.core simulation object; if False, returns the path to the simulation file.
 
-     Returns
-     --------
+    ``Returns``:
      An APSIMNGpy.core simulation object or the file path (str or Path) if simulation_object is ``False``
 
      Examples:
