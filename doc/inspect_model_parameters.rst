@@ -50,14 +50,15 @@ Reserved for future use (currently unused).
 
 Returns
 ---------------------------------
-| Model Type  | Return Format                                    |
-| ----------- | ------------------------------------------------ |
-| Weather     | File path(s) as string(s)                        |
-| Clock       | Dictionary with `Start` and `End` datetimes      |
-| Manager     | Dictionary of script parameters                  |
-| Soil models | `pandas.DataFrame` with layered data             |
-| Report      | Dictionary with `VariableNames` and `EventNames` |
-| Cultivar    | Dictionary of parameter strings                  |
+
+    | Model Type  | Return Format                                    |
+    | ----------- | ------------------------------------------------ |
+    | Weather     | File path(s) as string(s)                        |
+    | Clock       | Dictionary with `Start` and `End` datetimes      |
+    | Manager     | Dictionary of script parameters                  |
+    | Soil models | `pandas.DataFrame` with layered data             |
+    | Report      | Dictionary with `VariableNames` and `EventNames` |
+    | Cultivar    | Dictionary of parameter strings                  |
 
 
 .. plain text
