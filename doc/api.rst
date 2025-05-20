@@ -109,15 +109,19 @@ CoreModel
     It is designed to be base class for all apsimNGpy models.
 
     Parameters:
-        model (os.PathLike): The file path to the APSIM NG model. This parameter specifies the model file to be used in the simulation.
-        out_path (str, optional): The path where the output file should be saved. If not provided, the output will be saved with the same name as the model file in the current dir_path.
-        out (str, optional): Alternative path for the output file. If both `out_path` and `out` are specified, `out` takes precedence. Defaults to `None`.
-        experiment (bool, optional): Specifies whether to initiate your model as an experiment defaults to false
-        bY default, the experiment is created with permutation but permutation can be passed as a kewy word argument to change
-    Keyword parameters:
-      **`copy` (bool, deprecated)**: Specifies whether to clone the simulation file. This parameter is deprecated because the simulation file is now automatically cloned by default.
 
-    When an APSIM file is loaded, it is automatically copied to ensure a fallback to the original file in case of any issues during operations.
+        ``model`` (os.PathLike): The file path to the APSIM NG model. This parameter specifies the model file to be used in the simulation.
+
+        ``out_path`` (str, optional): The path where the output file should be saved. If not provided, the output will be saved with the same name as the model file in the current dir_path.
+
+        ``out`` (str, optional): Alternative path for the output file. If both `out_path` and `out` are specified, `out` takes precedence. Defaults to `None`.
+
+        ``experiment`` (bool, optional): Specifies whether to initiate your model as an experiment defaults to false
+          by default, the experiment is created with permutation but permutation can be passed as a kewy word argument to change
+    Keyword parameters:
+      **``copy`` (bool, deprecated)**: Specifies whether to clone the simulation file. This parameter is deprecated because the simulation file is now automatically cloned by default.
+
+    When an ``APSIM`` file is loaded, it is automatically copied to ensure a fallback to the original file in case of any issues during operations.
 
    Starting with version 0.35, accessing default simulations no longer requires the load_default_simulations function from the base_data module.
    Instead, default simulations can now be retrieved directly via the CoreModel attribute or the ApsimModel class by specifying the name of the crop (e.g., "Maize").
@@ -1143,14 +1147,14 @@ CoreModel
 
 .. function:: apsimNGpy.core.core.CoreModel.restart_model(self, model_info=None)
 
-   :param model_info: A named tuple object returned by `load_apsim_model` from the `model_loader` module.
+   ``model_info``: A named tuple object returned by `load_apsim_model` from the `model_loader` module.
 
         Notes:
-        - This parameter is crucial whenever we need to reinitialize the model, especially after updating management practices or editing the file.
+        - This parameter is crucial whenever we need to ``reinitialize`` the model, especially after updating management practices or editing the file.
         - In some cases, this method is executed automatically.
-        - If `model_info` is not specified, the simulation will be reinitialized from `self`.
+        - If ``model_info`` is not specified, the simulation will be reinitialized from `self`.
 
-        This function is called by `save_edited_file` and `update_mgt`.
+        This function is called by ``save_edited_file`` and ``update_mgt``.
 
         :return: self
 
@@ -1189,8 +1193,9 @@ CoreModel
 .. function:: apsimNGpy.core.core.CoreModel.save(self, file_name=None)
 
    Save the simulation models to file
-        @param file_name:    The name of the file to save the defaults to none, taking the exising filename
-        @return: model object
+        ``file_name``:    The name of the file to save the defaults to none, taking the exising filename
+
+        Returns: model object
 
 .. function:: apsimNGpy.core.core.CoreModel.save_edited_file(self, out_path: os.PathLike = None, reload: bool = False) -> Optional[ForwardRef('CoreModel')]
 
