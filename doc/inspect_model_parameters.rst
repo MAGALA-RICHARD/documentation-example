@@ -74,11 +74,8 @@ Let's take a look at how it works.
 .. code-block:: python
 
     from apsimNGpy.core import CoreModel
-
     model_instance = CoreModel('Maize')
-
     # Inspect full soil organic profile
-
     model_instance.inspect_model_parameters('Organic', simulations='Simulation', model_name='Organic')
            CNR  Carbon      Depth  FBiom  ...         FOM  Nitrogen  SoilCNRatio  Thickness
         0  12.0    1.20      0-150   0.04  ...  347.129032     0.100         12.0      150.0
