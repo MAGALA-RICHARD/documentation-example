@@ -720,22 +720,22 @@ CoreModel
 
 .. function:: apsimNGpy.core.core.CoreModel.inspect_model_parameters(self, model_type: Union[<module 'Models'>, str], model_name: str, simulations: Union[str, list] = 'all', parameters: Union[list, set, tuple, str] = 'all', **kwargs)
 
-   Inspect the input parameters of a specific APSIM model type instance within selected simulations.
+   Inspect the input parameters of a specific ``APSIM`` model type instance within selected simulations.
 
-        This method consolidates functionality previously spread across `examine_management_info`, `read_cultivar_params`, and other inspectors,
+        This method consolidates functionality previously spread across ``examine_management_info``, ``read_cultivar_params``, and other inspectors,
         allowing a unified interface for querying parameters of interest across a wide range of APSIM models.
 
         Parameters
         ----------
-        model_type : str
+        ``model_type`` : str
             The name of the model class to inspect (e.g., 'Clock', 'Manager', 'Physical', 'Chemical', 'Water', 'Solute').
             Shorthand names are accepted (e.g., 'Clock', 'Weather') as well as fully qualified names (e.g., 'Models.Clock', 'Models.Climate.Weather').
-        simulations : Union[str, list]
+        ``simulations`` : Union[str, list]
             A single simulation name or a list of simulation names within the APSIM context to inspect.
-        model_name : str
+        ``model_name`` : str
             The name of the specific model instance within each simulation. For example, if `model_type='Solute'`,
             `model_name` might be 'NH4', 'Urea', or another solute name.
-        parameters : Union[str, set, list, tuple], optional
+        ``parameters`` : Union[str, set, list, tuple], optional
             A specific parameter or a collection of parameters to inspect. Defaults to `'all'`, in which case all accessible attributes are returned.
             For layered models like Solute, valid parameters include `Depth`, `InitialValues`, `SoluteBD`, `Thickness`, etc.
         **kwargs : dict
@@ -1288,7 +1288,7 @@ ModelTools
    A utility class providing convenient access to core APSIM model operations and constants.
 
        Attributes:
-           ADD (callable): Function or class for adding components to an APSIM model.
+           ``ADD`` (callable): Function or class for adding components to an APSIM model.
 
            ``DELETE`` (callable): Function or class for deleting components from an APSIM model.
 
@@ -1324,10 +1324,10 @@ apsimNGpy.core.base_data
 
 .. function:: apsimNGpy.core.base_data.load_default_sensitivity_model(method: str, set_wd: str = None, simulations_object: bool = True)
 
-   Load default simulation model from aPSim folder
-    :@param method: string of the sentitivity child to load e.g. "Morris" or Sobol, not case-sensitive
-    :@param set_wd: string of the set_wd to copy the model
-    :@param simulations_object: bool to specify whether to return apsimNGp.core simulation object defaults to True
+   Load default simulation model from ``APSIM`` Example Folder.
+    :@param ``method``: string of the sentitivity child to load e.g. ``"Morris"`` or ``Sobol``, not case-sensitive
+    :@param ``set_wd``: string of the set_wd to copy the model
+    :@param ``simulations_object``: bool to specify whether to return apsimNGp.core simulation object defaults to ``True``
     :@return: apsimNGpy.core.CoreModel simulation objects
      Example
     # load apsimNG object directly
@@ -1337,18 +1337,17 @@ apsimNGpy.core.base_data
 
 .. function:: apsimNGpy.core.base_data.load_default_simulations(crop: str = 'Maize', set_wd: [<class 'str'>, <class 'pathlib.Path'>] = None, simulations_object: bool = True, **kwargs)
 
-   Load default simulation model from the aPSim folder.
+   Load specific crop default simulation model from the ``APSIM`` Example Folder.
 
-    :param crop: Crop to load (e.g., "Maize"). Not case-sensitive. defaults to maize
-    :param set_wd: Working directory to which the model should be copied.
-    :param simulations_object: If True, returns an APSIMNGpy.core simulation object;
-                               if False, returns the path to the simulation file.
-    :return: An APSIMNGpy.core simulation object or the file path (str or Path) if simulation_object is False
+    :param ``crop``: Crop to load (e.g., "Maize"). Not case-sensitive. defaults to ``Maize``
+    :param ``set_wd``: Working directory to which the model should be copied.
+    :param ``simulations_object``: If True, returns an APSIMNGpy.core simulation object; if False, returns the path to the simulation file.
+    :return: An APSIMNGpy.core simulation object or the file path (str or Path) if simulation_object is ``False``
 
     Examples:
-        >>> # Load the CoreModel object directly
+        >>> # Load the ``CoreModel`` object directly
         >>> model = load_default_simulations('Maize', simulations_object=True)
-        >>> # Run the model
+        >>> # Run the ``model``
         >>> model.run()
         >>> # Collect and print the results
         >>> df = model.results
@@ -1625,18 +1624,17 @@ apsimNGpy.core.structure
 
 .. function:: apsimNGpy.core.base_data.load_default_simulations(crop: str = 'Maize', set_wd: [<class 'str'>, <class 'pathlib.Path'>] = None, simulations_object: bool = True, **kwargs)
 
-   Load default simulation model from the aPSim folder.
+   Load specific crop default simulation model from the ``APSIM`` Example Folder.
 
-    :param crop: Crop to load (e.g., "Maize"). Not case-sensitive. defaults to maize
-    :param set_wd: Working directory to which the model should be copied.
-    :param simulations_object: If True, returns an APSIMNGpy.core simulation object;
-                               if False, returns the path to the simulation file.
-    :return: An APSIMNGpy.core simulation object or the file path (str or Path) if simulation_object is False
+    :param ``crop``: Crop to load (e.g., "Maize"). Not case-sensitive. defaults to ``Maize``
+    :param ``set_wd``: Working directory to which the model should be copied.
+    :param ``simulations_object``: If True, returns an APSIMNGpy.core simulation object; if False, returns the path to the simulation file.
+    :return: An APSIMNGpy.core simulation object or the file path (str or Path) if simulation_object is ``False``
 
     Examples:
-        >>> # Load the CoreModel object directly
+        >>> # Load the ``CoreModel`` object directly
         >>> model = load_default_simulations('Maize', simulations_object=True)
-        >>> # Run the model
+        >>> # Run the ``model``
         >>> model.run()
         >>> # Collect and print the results
         >>> df = model.results
