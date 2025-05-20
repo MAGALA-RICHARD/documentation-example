@@ -170,7 +170,8 @@ Inspect  ``Weather`` file path. The returned weather file is a ``path`` for weat
         >>> model_instance.inspect_model_parameters('Weather', simulations='Simulation', model_name='Weather')
         '%root%/Examples/WeatherFiles/AU_Dalby.met'
 
-Inspect ``Manager`` script parameters. These scripts are from the Manager Module::
+Inspect ``Manager`` script parameters. These scripts are from the Manager Module. You need to know the exact name of the script you want to inspect.
+Please use ``inspect_model(model_type='Manager', fullpath=False)`` to make a selection::
 
         >>> model_instance.inspect_model_parameters('Manager',
         ... simulations='Simulation', model_name='Sow using a variable rule')
