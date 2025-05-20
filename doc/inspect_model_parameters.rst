@@ -194,7 +194,8 @@ In the following example, we demonstrate how to inspect the value of a specific 
         ... parameters='Population')
         {'Population': '10'}
 
-# Inspect ``Cultivar`` parameters::
+Inspect ``Cultivar`` parameters. Please note that cultivar parameters are represent with an equal operator before the values,
+here they are returned key value pairs with paramters as the keys::
 
         >>> model_instance.inspect_model_parameters('Cultivar',
         ... simulations='Simulation', model_name='B_110') # lists all path specifications for B_110 parameters abd their values
@@ -212,7 +213,7 @@ In the following example, we demonstrate how to inspect the value of a specific 
         ... model_name='B_110', parameters='[Phenology].Juvenile.Target.FixedValue')
         {'[Phenology].Juvenile.Target.FixedValue': '210'}
 
-# Inspect ``SurfaceOrganicMatter`` module::
+Inspect ``SurfaceOrganicMatter`` module. the surface organic matter paramters are not layered as ``Organic, Physical and Water or Chemical``::
 
         >>> model_instance.inspect_model_parameters('Models.Surface.SurfaceOrganicMatter',
         ... simulations='Simulation', model_name='SurfaceOrganicMatter')
@@ -234,7 +235,7 @@ In the following example, we demonstrate how to inspect the value of a specific 
         ... model_name='SurfaceOrganicMatter', parameters={'InitialCNR', 'InitialResidueMass'})
         {'InitialCNR': 100.0, 'InitialResidueMass': 500.0}
 
-# Inspect simulation ``Clock``::
+# Inspect simulation ``Clock``. Only two attributes are inspected ``Start`` and ``End`` dates, and they are are returned as python datetime objects::
 
         >>> model_instance.inspect_model_parameters('Clock', simulations='Simulation', model_name='Clock')
         {'End': datetime.datetime(2000, 12, 31, 0, 0),
