@@ -57,9 +57,9 @@ Reserved for future use (currently unused).
 +--------------+----------------------------------------------------+
 | Manager      | Dictionary of script parameters                    |
 +--------------+----------------------------------------------------+
-| Soil models  | ``pandas.DataFrame`` with layered data             |
+| Soil models  | pandas.DataFrame with layered data                 |
 +--------------+----------------------------------------------------+
-| Report       | Dictionary with ``VariableNames`` and ``EventNames`` |
+| Report       | Dictionary with VariableNames`` and ``EventNames   |
 +--------------+----------------------------------------------------+
 | Cultivar     | Dictionary of parameter strings                    |
 +--------------+----------------------------------------------------+
