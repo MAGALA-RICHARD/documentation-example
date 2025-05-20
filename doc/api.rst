@@ -744,13 +744,13 @@ CoreModel
         Returns
         -------
         Union[dict, list, pd.DataFrame, Any]
-            The format depends on the model type:
-            - ``Weather``: file path(s) as string(s)
-            - ``Clock``: dictionary with start and end datetime objects (or a single datetime if only one is requested)
-            - ``Manager``: dictionary of script parameters
-            - ``Soil-related`` models: pandas DataFrame of layered values
-            - ``Report``: dictionary with `VariableNames` and `EventNames`
-            - ``Cultivar``: dictionary of parameter strings
+        The format depends on the model type:
+        - ``Weather``: file path(s) as string(s)
+        - ``Clock``: dictionary with start and end datetime objects (or a single datetime if only one is requested)
+        - ``Manager``: dictionary of script parameters
+        - ``Soil-related`` models: pandas DataFrame of layered values
+        - ``Report``: dictionary with `VariableNames` and `EventNames`
+        - ``Cultivar``: dictionary of parameter strings
 
         Raises
         ------
