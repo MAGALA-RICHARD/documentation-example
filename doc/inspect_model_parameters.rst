@@ -103,7 +103,7 @@ Let's take a look at how it works.
         6  0.280000  1.187495  0.452332  ...  135.699528     300.0               1800.0
         [7 rows x 17 columns]
 
-# Inspect soil chemical profile
+# Inspect soil ``Chemical`` profile
 
         >>> model_instance.inspect_model_parameters('Chemical', simulations='Simulation', model_name='Chemical')
                Depth   PH  Thickness
@@ -115,11 +115,8 @@ Let's take a look at how it works.
         5  1200-1500  8.0      300.0
         6  1500-1800  8.0      300.0
 
-        # Inspect chemical soil properties
 
-        >>> model_instance.inspect_model_parameters('Chemical', simulations='Simulation', model_name='Chemical')
-
-        # Inspect one or more specific parameters
+# Inspect ``one`` or ``more`` specific parameters
 
         >>> model_instance.inspect_model_parameters('Organic', simulations='Simulation', model_name='Organic', parameters='Carbon')
           Carbon
