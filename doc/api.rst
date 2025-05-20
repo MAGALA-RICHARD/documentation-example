@@ -685,6 +685,7 @@ CoreModel
         :return: list[str]: list of all full paths or names of the model relative to the parent simulations node 
 
         Example:
+
         >>> from apsimNGpy.core import base_data
         >>> from apsimNGpy.core.core import Models
 
@@ -708,6 +709,13 @@ CoreModel
          ['.Simulations.Simulation.Field.Fertiliser']
 
          >>> model.inspect_model('Models.Fertiliser', fullpath=False) # strings are allowed to
+
+         The models from Models namespace are abstracted to use strings. all you need is to specify the name or the full path to the model enclosed in a stirng as follows
+
+         >>> model.inspect_model('Clock') # get the path to the clock model
+         ['.Simulations.Simulation.Clock']
+
+         >>> model.inspect_model('IPlant')
 
 .. function:: apsimNGpy.core.core.CoreModel.inspect_model_parameters(self, model_type: Union[<module 'Models'>, str], model_name: str, simulations: Union[str, list] = 'all', parameters: Union[list, set, tuple, str] = 'all', **kwargs)
 
