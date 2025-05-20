@@ -450,9 +450,11 @@ CoreModel
 
         Examples
         --------
+
         >>> model = CoreModel(model='Maize')
 
         # Edit a cultivar model
+
         >>> model.edit_model(
         ...     model_type='Cultivar',
         ...     simulations='Simulation',
@@ -463,6 +465,7 @@ CoreModel
         ... )
 
         # Edit a soil organic matter module
+
         >>> model.edit_model(
         ...     model_type='Organic',
         ...     simulations='Simulation',
@@ -471,6 +474,7 @@ CoreModel
         ... )
 
         # Edit multiple soil layers
+
         >>> model.edit_model(
         ...     model_type='Organic',
         ...     simulations='Simulation',
@@ -479,6 +483,7 @@ CoreModel
         ... )
 
         # Edit solute models
+
         >>> model.edit_model(
         ...     model_type='Solute',
         ...     simulations='Simulation',
@@ -494,6 +499,7 @@ CoreModel
         ... )
 
         # Edit a manager script
+
         >>> model.edit_model(
         ...     model_type='Manager',
         ...     simulations='Simulation',
@@ -502,6 +508,7 @@ CoreModel
         ... )
 
         # Edit surface organic matter parameters
+
         >>> model.edit_model(
         ...     model_type='SurfaceOrganicMatter',
         ...     simulations='Simulation',
@@ -517,6 +524,7 @@ CoreModel
         ... )
 
         # Edit Clock start and end dates
+
         >>> model.edit_model(
         ...     model_type='Clock',
         ...     simulations='Simulation',
@@ -526,6 +534,7 @@ CoreModel
         ... )
 
         # Edit report variables
+
         >>> model.edit_model(
         ...     model_type='Report',
         ...     simulations='Simulation',
@@ -534,6 +543,7 @@ CoreModel
         ... )
 
         # Multiple report variables
+
         >>> model.edit_model(
         ...     model_type='Report',
         ...     simulations='Simulation',
