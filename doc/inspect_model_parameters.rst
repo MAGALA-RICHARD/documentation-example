@@ -15,7 +15,7 @@ The inspect_model_parameters method simplifies parameter inspection by consolida
 
 - Various model-specific inspectors
 
-Function ``signature``
+inspect_model_parameters function ``signature``
 ----------------------------------
 .. code-block:: python
 
