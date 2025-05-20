@@ -138,7 +138,7 @@ Let's take a look at how it works.
         5    0.12  12.0
         6    0.12  12.0
 
-        # Inspect Report module attributes
+# Inspect ``Report`` module attributes
 
         >>> model_instance.inspect_model_parameters('Report', simulations='Simulation', model_name='Report')
         {'EventNames': ['[Maize].Harvesting'],
@@ -157,12 +157,12 @@ Let's take a look at how it works.
         >>> model_instance.inspect_model_parameters('Report', simulations='Simulation', model_name='Report', parameters='EventNames')
         {'EventNames': ['[Maize].Harvesting']}
 
-        # Inspect weather file path
+# Inspect  ``Weather`` file path
 
         >>> model_instance.inspect_model_parameters('Weather', simulations='Simulation', model_name='Weather')
         '%root%/Examples/WeatherFiles/AU_Dalby.met'
 
-        # Inspect manager script parameters
+# Inspect ``Manager`` script parameters
 
         >>> model_instance.inspect_model_parameters('Manager',
         ... simulations='Simulation', model_name='Sow using a variable rule')
@@ -182,7 +182,7 @@ Let's take a look at how it works.
         ... parameters='Population')
         {'Population': '10'}
 
-        # Inspect cultivar parameters
+# Inspect ``Cultivar`` parameters
 
         >>> model_instance.inspect_model_parameters('Cultivar',
         ... simulations='Simulation', model_name='B_110') # lists all path specifications for B_110 parameters abd their values
@@ -190,7 +190,7 @@ Let's take a look at how it works.
         ... model_name='B_110', parameters='[Phenology].Juvenile.Target.FixedValue')
         {'[Phenology].Juvenile.Target.FixedValue': '210'}
 
-        # Inspect surface organic matter module
+# Inspect ``SurfaceOrganicMatter`` module
 
         >>> model_instance.inspect_model_parameters('Models.Surface.SurfaceOrganicMatter',
         ... simulations='Simulation', model_name='SurfaceOrganicMatter')
@@ -212,7 +212,7 @@ Let's take a look at how it works.
         ... model_name='SurfaceOrganicMatter', parameters={'InitialCNR', 'InitialResidueMass'})
         {'InitialCNR': 100.0, 'InitialResidueMass': 500.0}
 
-        # Inspect simulation clock
+# Inspect simulation ``Clock``
 
         >>> model_instance.inspect_model_parameters('Clock', simulations='Simulation', model_name='Clock')
         {'End': datetime.datetime(2000, 12, 31, 0, 0),
@@ -226,7 +226,7 @@ Let's take a look at how it works.
         ... model_name='Clock', parameters='Start').year # gets the start year only
         1990
 
-        # Inspect solute models
+# Inspect solute models
 
         >>> model_instance.inspect_model_parameters('Solute', simulations='Simulation', model_name='Urea')
                Depth  InitialValues  SoluteBD  Thickness
