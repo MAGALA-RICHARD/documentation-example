@@ -48,24 +48,7 @@ Common examples for layered models like Solute: Depth, InitialValues, SoluteBD, 
 
 **kwargs: Reserved for future use (currently unused).
 
-
-returns
-+--------------+------------------------------------------------------+
-| Model Type   | Return Format                                        |
-+==============+======================================================+
-| Weather      | File path(s) as string(s)                            |
-+--------------+------------------------------------------------------+
-| Clock        | Dictionary with ``Start`` and ``End`` datetimes      |
-+--------------+------------------------------------------------------+
-| Manager      | Dictionary of script parameters                      |
-+--------------+------------------------------------------------------+
-| Soil models  | ``pandas.DataFrame`` with layered data               |
-+--------------+------------------------------------------------------+
-| Report       | Dictionary with ``VariableNames`` and ``EventNames`` |
-+--------------+------------------------------------------------------+
-| Cultivar     | Dictionary of parameter strings                      |
-+--------------+------------------------------------------------------+
-
+Returns
 
 +--------------+----------------------------------------------------+
 | Model Type   | Return Format                                      |
