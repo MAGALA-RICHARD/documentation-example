@@ -76,7 +76,7 @@ Let's take a look at how it works.
     from apsimNGpy.core import CoreModel
     model_instance = CoreModel('Maize')
 
-# Inspect full soil ``Organic`` profile
+Inspect full soil ``Organic`` profile::
 
         >>> model_instance.inspect_model_parameters('Organic', simulations='Simulation', model_name='Organic')
            CNR  Carbon      Depth  FBiom  ...         FOM  Nitrogen  SoilCNRatio  Thickness
@@ -90,7 +90,8 @@ Let's take a look at how it works.
         [7 rows x 9 columns]
 
 
-# Inspect soil ``Physical`` profile
+
+Inspect soil ``Physical`` profile::
 
         >>> model_instance.inspect_model_parameters('Physical', simulations='Simulation', model_name='Physical')
             AirDry        BD       DUL  ...        SWmm Thickness  ThicknessCumulative
@@ -103,7 +104,7 @@ Let's take a look at how it works.
         6  0.280000  1.187495  0.452332  ...  135.699528     300.0               1800.0
         [7 rows x 17 columns]
 
-# Inspect soil ``Chemical`` profile
+Inspect soil ``Chemical`` profile::
 
         >>> model_instance.inspect_model_parameters('Chemical', simulations='Simulation', model_name='Chemical')
                Depth   PH  Thickness
@@ -141,7 +142,9 @@ Inspect only few selected parameters ``'Carbon'``, ``'CNR'``::
         5    0.12  12.0
         6    0.12  12.0
 
-# Inspect ``Report`` module attributes::
+# Inspect ``Report`` module attributes. Report attributes are returned in two categories;
+ 1. 'EventNames': used for triggering recording or reporting events
+ 2. 'VariableNames': actual variable  paths::
 
         >>> model_instance.inspect_model_parameters('Report', simulations='Simulation', model_name='Report')
         {'EventNames': ['[Maize].Harvesting'],
