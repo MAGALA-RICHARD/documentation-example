@@ -42,7 +42,7 @@ autosummary_generate = True  # Automatically create stub pages for modules
 # -- Options for EPUB output
 epub_show_urls = "footnote"
 
-html_theme  = "furo" #"sphinx_rtd_theme"
+html_theme = "sphinx_rtd_theme"
 
 exclude_patterns = ["_build", "Thumbs.db", ".DS_Store", '.apsimx', '.db']
 
