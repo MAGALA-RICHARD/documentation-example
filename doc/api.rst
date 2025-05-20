@@ -293,25 +293,27 @@ CoreModel
 
 .. function:: apsimNGpy.core.core.CoreModel.change_simulation_dates(self, start_date: str = None, end_date: str = None, simulations: Union[tuple, list] = None)
 
-   Set simulation dates. this is important to run this method before run the weather replacement method as
-        the date needs to be allowed into weather
+   Set simulation dates.
 
         Parameters
         -----------------------------------
 
-        :param: start_date: (str) optional
-            Start date as string, by default `None`
-        :param end_date: str (str) optional
-            End date as string, by default `None`
-        :param simulations (str), optional
-            List of simulation names to update, if `None` update all simulations
+        ``start_date``: (str) optional
+            Start date as string, by default ``None``.
+
+        ``end_date``: str (str) optional.
+            End date as string, by default ``None``.
+
+        ``simulations`` (str), optional
+            List of simulation names to update, if ``None`` update all simulations.
         Note
         ________
-        one of the start_date or end_date parameters should at least not be None
+        one of the ``start_date`` or ``end_date`` parameters should at least not be None
 
         raises assertion error if all dates are None
 
-        @return None
+        ``return``: ``none``
+
         Example:
         ---------
             >>> from apsimNGpy.core.base_data import load_default_simulations
@@ -327,16 +329,16 @@ CoreModel
 
 .. function:: apsimNGpy.core.core.CoreModel.change_som(self, *, simulations: Union[tuple, list] = None, inrm: int = None, icnr: int = None, surface_om_name='SurfaceOrganicMatter', **kwargs)
 
-   Change Surface Organic Matter (SOM) properties in specified simulations.
+   Change ``Surface Organic Matter`` (``SOM``) properties in specified simulations.
 
     Parameters:
-        simulations (str ort list): List of simulation names to target (default: None).
+        ``simulations`` (str ort list): List of simulation names to target (default: None).
 
-        inrm (int): New value for Initial Residue Mass (default: 1250).
+        ``inrm`` (int): New value for Initial Residue Mass (default: 1250).
 
-        icnr (int): New value for Initial Carbon to Nitrogen Ratio (default: 27).
+        ``icnr``` (int): New value for Initial Carbon to Nitrogen Ratio (default: 27).
 
-        surface_om_name (str, optional): name of the surface organic matter child defaults to ='SurfaceOrganicMatter'
+        ``surface_om_name`` (str, optional): name of the surface organic matter child defaults to ='SurfaceOrganicMatter'
     Returns:
         self: The current instance of the class.
 
@@ -581,10 +583,8 @@ CoreModel
 
         Parameters
         ----------
-        simulations, optional
-            List or tuple of simulation names to update, if `None` show all simulations. if you are not sure,
-
-            use the property decorator 'extract_simulation_name'
+        ``simulations``, optional
+            List or tuple of simulation names to update, if `None` show all simulations.
 
 .. function:: apsimNGpy.core.core.CoreModel.extract_any_soil_physical(self, parameter, simulations: [<class 'list'>, <class 'tuple'>] = None)
 
@@ -625,8 +625,9 @@ CoreModel
    Get user_input of a given model manager script.
 
         Args:
-            manager_name (str): name of the Models.Manager script
-        returns:  a dictionary of user input with the key as the script parameters and values as the inputs
+            ``manager_name`` (str): name of the Models.Manager script.
+
+            ``returns:`  a dictionary of user input with the key as the script parameters and values as the inputs
 
         Example:
         ____________________
@@ -635,7 +636,6 @@ CoreModel
         >>> model = load_default_simulations(crop = 'maize')
         >>> ui = model.extract_user_input(manager_name='Fertilise at sowing')
         >>> print(ui)
-
         {'Crop': 'Maize', 'FertiliserType': 'NO3N', 'Amount': '160.0'}
 
 .. function:: apsimNGpy.core.core.CoreModel.find_model(model_name: str, model_namespace=None)
@@ -997,8 +997,9 @@ CoreModel
 
 .. function:: apsimNGpy.core.core.CoreModel.preview_simulation(self)
 
-   Preview the simulation file in the apsimNGpy object in the APSIM graphical user interface
-        @return: opens the simulation file
+   Preview the simulation file in the apsimNGpy object in the APSIM graphical user interface.
+
+        ``return``: opens the simulation file
 
 .. function:: apsimNGpy.core.core.CoreModel.read_from_db_names(self, report_names: Union[str, list], **kwargs) -> pandas.core.frame.DataFrame
 
@@ -1026,9 +1027,9 @@ CoreModel
 
    Args:
         ______________
-        out_path: os.PathLike object this method is called to convert the simulation object from ConverterReturnType to model like object
+        ``out_path``: os.PathLike object this method is called to convert the simulation object from ConverterReturnType to model like object
 
-        return: self
+        ``return:`` self
 
 .. function:: apsimNGpy.core.core.CoreModel.remove_model(self, model_type: <module 'Models'>, model_name: str = None)
 
@@ -1080,19 +1081,23 @@ CoreModel
         e.g., a soil node to soil node, clock node to clock node, et.c
 
         Args:
-            model: Path to the APSIM model file or a CoreModel instance.
-            model_type (str): Class name (as string) of the model to replace (e.g., "Soil").
-            model_name (str, optional): Name of the model instance to copy from the source model.
+            ``model``: Path to the APSIM model file or a CoreModel instance.
+
+            ``model_type`` (str): Class name (as string) of the model to replace (e.g., "Soil").
+
+            ``model_name`` (str, optional): Name of the model instance to copy from the source model.
                 If not provided, the first match is used.
-            target_model_name (str, optional): Specific simulation name to target for replacement.
+
+            ``target_model_name`` (str, optional): Specific simulation name to target for replacement.
                 Only used when replacing Simulation-level objects.
-            simulations (str, optional): Simulation(s) to operate on. If None, applies to all.
+
+            ``simulations`` (str, optional): Simulation(s) to operate on. If None, applies to all.
 
         Returns:
             self: To allow method chaining.
 
-        Raises:
-            ValueError: If model_type is "Simulations" which is not allowed for replacement.
+        ``Raises:``
+            ``ValueError``: If ``model_type`` is "Simulations" which is not allowed for replacement.
 
 .. function:: apsimNGpy.core.core.CoreModel.replace_soil_property_values(self, *, parameter: str, param_values: list, soil_child: str, simulations: list = None, indices: list = None, crop=None, **kwargs)
 
@@ -1288,11 +1293,12 @@ CoreModel
 
         Parameters
         ----------
-       - parameters (dict, required) dictionary of cultivar parameters to update.
+       ``parameters`` (dict, required) dictionary of cultivar parameters to update.
 
-       - simulations, optional
+       ``simulations``, optional
             List or tuples of simulation names to update if `None` update all simulations.
-       - clear (bool, optional)
+
+       ``clear`` (bool, optional)
             If `True` remove all existing parameters, by default `False`.
 
 .. function:: apsimNGpy.core.core.CoreModel.update_mgt(self, *, management: Union[dict, tuple], simulations: [<class 'list'>, <class 'tuple'>] = None, out: [<class 'pathlib.Path'>, <class 'str'>] = None, reload: bool = True, **kwargs)
@@ -1301,43 +1307,40 @@ CoreModel
 
             Parameters
             ----------
-            management : dict or tuple
+            ``management`` : dict or tuple
                 A dictionary or tuple of management parameters to update. The dictionary should have 'Name' as the key
                 for the management script's name and corresponding values to update. Lists are not allowed as they are mutable
                 and may cause issues with parallel processing. If a tuple is provided, it should be in the form (param_name, param_value).
 
-            simulations : list of str, optional
+            ``simulations`` : list of str, optional
                 List of simulation names to update. If `None`, updates all simulations. This is not recommended for large
                 numbers of simulations as it may result in a high computational load.
 
-            out : str or pathlike, optional
+            ``out`` : str or pathlike, optional
                 Path to save the edited model. If `None`, uses the default output path specified in `self.out_path` or
                 `self.model_info.path`. No need to call `save_edited_file` after updating, as this method handles saving.
 
             Returns
             -------
-            self : Editor
-                Returns the instance of the `Editor` class for method chaining.
+            self : CoreModel
+                Returns the instance of the `CoreModel` class for method chaining.
 
-            Notes ----- - Ensure that the `management` parameter is provided in the correct format to avoid errors. -
-            This method does not perform validation on the provided `management` dictionary beyond checking for key
+            Notes - Ensure that the ``management`` parameter is provided in the correct format to avoid errors. -
+            This method does not perform ``validation`` on the provided ``management`` dictionary beyond checking for key
             existence. - If the specified management script or parameters do not exist, they will be ignored.
-            using a tuple for a specifying management script, paramters is recommended if you are going to pass the function to  a multi-processing class fucntion
 
 .. function:: apsimNGpy.core.core.CoreModel.update_mgt_by_path(self, *, path: str, fmt='.', **kwargs)
 
    Args:
         _________________
-        path: complete node path to the script manager e.g. '.Simulations.Simulation.Field.Sow using a
-        variable rule'
+        ``path``: complete node path to the script manager e.g. '.Simulations.Simulation.Field.Sow using a variable rule'
 
-        fmt: seperator for formatting the path e.g., ".". Other characters can be used with
-        caution, e.g., / and clearly declared in fmt argument.
-        For the above path if we want to use the forward slash, it will be '/Simulations/Simulation/Field/Sow using a variable rule', fmt = '/'
+        ``fmt``: seperator for formatting the path e.g., ".". Other characters can be used with
+         caution, e.g., / and clearly declared in fmt argument. If you want to use the forward slash, it will be '/Simulations/Simulation/Field/Sow using a variable rule', fmt = '/'
 
-        kwargs: Corresponding keyword arguments representing the paramters in the script manager and their values. Values is what you want
-        to change to; Example here Population =8.2, values should be entered with their corresponding data types e.g.,
-        int, float, bool,str etc.
+        ``kwargs``: Corresponding keyword arguments representing the paramters in the script manager and their values. Values is what you want
+        to change to; Example here ``Population`` =8.2, values should be entered with their corresponding data types e.g.,
+         int, float, bool,str etc.
 
         return: self
 
