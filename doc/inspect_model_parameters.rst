@@ -117,7 +117,8 @@ Inspect soil ``Chemical`` profile::
         6  1500-1800  8.0      300.0
 
 
-# Inspect ``one`` or ``more`` specific parameters. This can be achievement by key word argument ``parameters``. This argument accepts both strings and ``lists`` or ``tuple``::
+# Inspect ``one`` or ``more`` specific parameters. This can be achievement by key word argument ``parameters``.
+This argument accepts both strings and ``lists`` or ``tuple``. Please see the preceding examples::
 
         >>> model_instance.inspect_model_parameters('Organic', simulations='Simulation', model_name='Organic', parameters='Carbon')
           Carbon
