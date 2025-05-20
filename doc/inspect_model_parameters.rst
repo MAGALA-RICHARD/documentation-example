@@ -226,7 +226,7 @@ Let's take a look at how it works.
         ... model_name='Clock', parameters='Start').year # gets the start year only
         1990
 
-# Inspect solute models
+# Inspect ``Solute`` models
 
         >>> model_instance.inspect_model_parameters('Solute', simulations='Simulation', model_name='Urea')
                Depth  InitialValues  SoluteBD  Thickness
