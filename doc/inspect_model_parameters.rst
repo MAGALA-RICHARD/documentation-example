@@ -61,7 +61,7 @@ Returns
     | Cultivar    | Dictionary of parameter strings                  |
 
 
-.. plain text
+
 
         Examples
         --------
