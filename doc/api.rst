@@ -614,11 +614,11 @@ CoreModel
 
         Parameters
         ----------
-        @param simulations: (str) optional
-            List of simulation names to use if `None` get all simulations
-        @Returns
-        -------
-            Dictionary of simulation names with dates
+        ``simulations``: (str) optional
+            List of simulation names to use if `None` get all simulations.
+
+        ``Returns``
+            Dictionary of simulation names with dates.
 
 .. function:: apsimNGpy.core.core.CoreModel.extract_user_input(self, manager_name: str)
 
