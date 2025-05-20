@@ -235,7 +235,7 @@ Inspect ``SurfaceOrganicMatter`` module. the surface organic matter paramters ar
         ... model_name='SurfaceOrganicMatter', parameters={'InitialCNR', 'InitialResidueMass'})
         {'InitialCNR': 100.0, 'InitialResidueMass': 500.0}
 
-# Inspect simulation ``Clock``. Only two attributes are inspected ``Start`` and ``End`` dates, and they are are returned as python datetime objects
+Inspect simulation ``Clock``. Only two attributes are inspected ``Start`` and ``End`` dates, and they are are returned as python datetime objects
 
 Example::
 
@@ -247,10 +247,10 @@ Example::
         ... model_name='Clock', parameters='End')
         datetime.datetime(2000, 12, 31, 0, 0)
 
-# Extract ``Start`` year year only. let's see with ``start`` year as an example::
+Extract ``Start`` year year only. let's see with ``start`` year as an example::
 
         >>> model_instance.inspect_model_parameters('Clock', simulations='Simulation',
-        ... model_name='Clock', parameters='Start').year # gets the start year only
+        ... model_name='Clock', parameters='Start').year
         1990
 
 Extract  ``End`` year only::
