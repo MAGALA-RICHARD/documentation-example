@@ -183,6 +183,8 @@ Inspect only few selected parameters ``'Carbon'``, ``'CNR'``::
         'RowSpacing': '750.0',
         'Population': '10'}
 
+suggest a script manager parameter to inspect. Script paramters vary from one script to another. You might need to inspect it to get a general idea::
+
         >>> model_instance.inspect_model_parameters('Manager',
         ... simulations='Simulation', model_name='Sow using a variable rule',
         ... parameters='Population')
