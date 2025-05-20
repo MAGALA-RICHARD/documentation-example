@@ -852,7 +852,6 @@ CoreModel
 
         >>> model_instance.inspect_model_parameters('Models.Surface.SurfaceOrganicMatter',
         ... simulations='Simulation', model_name='SurfaceOrganicMatter')
-
         {'NH4': 0.0,
          'InitialResidueMass': 500.0,
          'StandingWt': 0.0,
@@ -869,22 +868,20 @@ CoreModel
 
         >>> model_instance.inspect_model_parameters('Models.Surface.SurfaceOrganicMatter', simulations='Simulation',
         ... model_name='SurfaceOrganicMatter', parameters={'InitialCNR', 'InitialResidueMass'})
-
         {'InitialCNR': 100.0, 'InitialResidueMass': 500.0}
 
         # Inspect simulation clock
 
         >>> model_instance.inspect_model_parameters('Clock', simulations='Simulation', model_name='Clock')
+        {'End': datetime.datetime(2000, 12, 31, 0, 0),
+        'Start': datetime.datetime(1990, 1, 1, 0, 0)}
 
-         {'End': datetime.datetime(2000, 12, 31, 0, 0),
-         'Start': datetime.datetime(1990, 1, 1, 0, 0)}
+        >>> model_instance.inspect_model_parameters('Clock', simulations='Simulation',
+        ... model_name='Clock', parameters='End')
+        datetime.datetime(2000, 12, 31, 0, 0)
 
-        >>> model_instance.inspect_model_parameters('Clock', simulations='Simulation', model_name='Clock', parameters='End')
-
-         datetime.datetime(2000, 12, 31, 0, 0)
-
-        >>> model_instance.inspect_model_parameters('Clock', simulations='Simulation', model_name='Clock', parameters='Start').year
-
+        >>> model_instance.inspect_model_parameters('Clock', simulations='Simulation',
+        ... model_name='Clock', parameters='Start').year # gets the start year only
         1990
 
         # Inspect solute models
