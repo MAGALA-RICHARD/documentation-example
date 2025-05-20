@@ -186,6 +186,16 @@ Let's take a look at how it works.
 
         >>> model_instance.inspect_model_parameters('Cultivar',
         ... simulations='Simulation', model_name='B_110') # lists all path specifications for B_110 parameters abd their values
+        {'[Phenology].Juvenile.Target.FixedValue': '210',
+        '[Phenology].Photosensitive.Target.XYPairs.X': '0, 12.5, 24',
+        '[Phenology].Photosensitive.Target.XYPairs.Y': '0, 0, 0',
+        '[Phenology].FlagLeafToFlowering.Target.FixedValue': '1',
+        '[Phenology].FloweringToGrainFilling.Target.FixedValue': '170',
+        '[Phenology].GrainFilling.Target.FixedValue': '730',
+        '[Phenology].Maturing.Target.FixedValue': '1',
+        '[Phenology].MaturityToHarvestRipe.Target.FixedValue': '100',
+        '[Rachis].DMDemands.Structural.DMDemandFunction.MaximumOrganWt.FixedValue': '36'}
+
         >>> model_instance.inspect_model_parameters('Cultivar', simulations='Simulation',
         ... model_name='B_110', parameters='[Phenology].Juvenile.Target.FixedValue')
         {'[Phenology].Juvenile.Target.FixedValue': '210'}
