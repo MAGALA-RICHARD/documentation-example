@@ -742,27 +742,34 @@ CoreModel
         >>> model_instance = CoreModel('Maize')
 
         # Inspect full soil organic profile
+
         >>> model_instance.inspect_model_parameters('Organic', simulations='Simulation', model_name='Organic')
 
         # Inspect chemical soil properties
+
         >>> model_instance.inspect_model_parameters('Chemical', simulations='Simulation', model_name='Chemical')
 
         # Inspect one or more specific parameters
+
         >>> model_instance.inspect_model_parameters('Organic', simulations='Simulation', model_name='Organic', parameters='Carbon')
         >>> model_instance.inspect_model_parameters('Organic', simulations='Simulation', model_name='Organic', parameters=['Carbon', 'CNR'])
 
         # Inspect Report module attributes
+
         >>> model_instance.inspect_model_parameters('Report', simulations='Simulation', model_name='Report')
         >>> model_instance.inspect_model_parameters('Report', simulations='Simulation', model_name='Report', parameters='EventNames')
 
         # Inspect weather file path
+
         >>> model_instance.inspect_model_parameters('Weather', simulations='Simulation', model_name='Weather')
 
         # Inspect manager script parameters
+
         >>> model_instance.inspect_model_parameters('Manager', simulations='Simulation', model_name='Sow using a variable rule')
         >>> model_instance.inspect_model_parameters('Manager', simulations='Simulation', model_name='Sow using a variable rule', parameters='Population')
 
         # Inspect cultivar parameters
+
         >>> model_instance.inspect_model_parameters('Cultivar', simulations='Simulation', model_name='B_110')
         >>> model_instance.inspect_model_parameters('Cultivar', simulations='Simulation', model_name='B_110', parameters='[Phenology].Juvenile.Target.FixedValue')
 
@@ -771,11 +778,13 @@ CoreModel
         >>> model_instance.inspect_model_parameters('Models.Surface.SurfaceOrganicMatter', simulations='Simulation', model_name='SurfaceOrganicMatter', parameters={'InitialCNR', 'InitialResidueMass'})
 
         # Inspect simulation clock
+
         >>> model_instance.inspect_model_parameters('Clock', simulations='Simulation', model_name='Clock')
         >>> model_instance.inspect_model_parameters('Clock', simulations='Simulation', model_name='Clock', parameters='End')
         >>> model_instance.inspect_model_parameters('Clock', simulations='Simulation', model_name='Clock', parameters='Start').year
 
         # Inspect solute models
+
         >>> model_instance.inspect_model_parameters('Solute', simulations='Simulation', model_name='Urea')
         >>> model_instance.inspect_model_parameters('Solute', simulations='Simulation', model_name='NH4', parameters='InitialValues')
 
