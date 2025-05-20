@@ -235,7 +235,9 @@ Inspect ``SurfaceOrganicMatter`` module. the surface organic matter paramters ar
         ... model_name='SurfaceOrganicMatter', parameters={'InitialCNR', 'InitialResidueMass'})
         {'InitialCNR': 100.0, 'InitialResidueMass': 500.0}
 
-# Inspect simulation ``Clock``. Only two attributes are inspected ``Start`` and ``End`` dates, and they are are returned as python datetime objects::
+# Inspect simulation ``Clock``. Only two attributes are inspected ``Start`` and ``End`` dates, and they are are returned as python datetime objects
+
+Example::
 
         >>> model_instance.inspect_model_parameters('Clock', simulations='Simulation', model_name='Clock')
         {'End': datetime.datetime(2000, 12, 31, 0, 0),
@@ -245,7 +247,7 @@ Inspect ``SurfaceOrganicMatter`` module. the surface organic matter paramters ar
         ... model_name='Clock', parameters='End')
         datetime.datetime(2000, 12, 31, 0, 0)
 
-# Extract ``Start`` year or ``End`` year only. let's see with ``start`` year as an example
+# Extract ``Start`` year or ``End`` year only. let's see with ``start`` year as an example.
 
         >>> model_instance.inspect_model_parameters('Clock', simulations='Simulation',
         ... model_name='Clock', parameters='Start').year # gets the start year only
@@ -263,7 +265,7 @@ Inspect ``SurfaceOrganicMatter`` module. the surface organic matter paramters ar
         5  1200-1500            0.0  1.162873      300.0
         6  1500-1800            0.0  1.187495      300.0
 
-# Inspect NH4 ``InitialValues``::
+# Inspect NH4 ``InitialValues``For layered properties, all are returned as pandas even if one parameter is specified::
 
         >>> model_instance.inspect_model_parameters('Solute', simulations='Simulation', model_name='NH4',
         ... parameters='InitialValues')
