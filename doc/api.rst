@@ -200,23 +200,24 @@ CoreModel
         For example, a Clock model cannot be added to a Soil model.
 
         Args:
-            :model_type (str or Models object): The type of model to add, e.g., `Models.Clock` or just `"Clock"`. if the APSIM Models namespace is exposed to the current script, then model_type can be Models.Clock without strings quotes
-            rename (str): The new name for the model.
+            ``model_type`` (str or Models object): The type of model to add, e.g., `Models.Clock` or just `"Clock"`. if the APSIM Models namespace is exposed to the current script, then model_type can be Models.Clock without strings quotes
 
-            :adoptive_parent (Models object): The target parent where the model will be added or moved e.g `Models.Clock` or Clock as string all are valid
+            ``rename`` (str): The new name for the model.
 
-            :adoptive_parent_name (Models object, optional): Specifies the parent name for precise location. e.g Models.Core.Simulation or Simulations all are valid
+            ``adoptive_parent`` (Models object): The target parent where the model will be added or moved e.g ``Models.Clock`` or ``Clock`` as string all are valid
 
-            :source (Models, str, CoreModel, ApsimModel object): defaults to Models namespace, implying a fresh non modified model.
-            The source can be an existing Models or string name to point to one fo the default model example, which we can extract the model 
+            ``adoptive_parent_name`` (Models object, optional): Specifies the parent name for precise location. e.g ``Models.Core.Simulation`` or ``Simulations`` all are valid
+
+            ``source`` (Models, str, CoreModel, ApsimModel object): ``defaults`` to Models namespace, implying a fresh non modified model.
+            The source can be an existing Models or string name to point to one fo the default model example, which we can extract the model
             
-            :override (bool, optional): defaults to `True`. When `True` (recomended) it delete for any model with same name and type at the suggested parent location before adding the new model
-            if False and proposed model to be added exists at the parent location, APSIM automatically generates a new name for the newly added model. This is not recommended.
+            ``override`` (bool, optional): defaults to `True`. When `True` (recomended) it delete for any model with same name and type at the suggested parent location before adding the new model
+            if ``False`` and proposed model to be added exists at the parent location, ``APSIM`` automatically generates a new name for the newly added model. This is not recommended.
         Returns:
-            None: Models are modified in place, so models retains the same reference.
+            None: ``Models`` are modified in place, so models retains the same reference.
 
         Note:
-            Added models are initially empty. Additional configuration is required to set parameters.
+            Added models from ``Models namespace`` are initially empty. Additional configuration is required to set parameters.
             For example, after adding a Clock module, you must set the start and end dates.
 
         Example:
@@ -238,13 +239,16 @@ CoreModel
         Parameters
         -------------------
 
-        :param variable_spec: (str, required): list of text commands for the report variables e.g., '[Clock].Today as Date'
-        :param report_name: (str, optional): name of the report variable if not specified the first accessed report object will be altered
-        :set_event_names (list or str, optional): A list of APSIM events that trigger the recording of variables.
+        ``variable_spec``: (str, required): list of text commands for the report variables e.g., '[Clock].Today as Date'
+
+        ``param report_name``: (str, optional): name of the report variable if not specified the first accessed report object will be altered
+
+        ``set_event_names`` (list or str, optional): A list of APSIM events that trigger the recording of variables.
                                                      Defaults to ['[Clock].EndOfYear'] if not provided.
         :Returns:
             returns instance of apsimNGpy.core.core.apsim.ApsimModel or apsimNGpy.core.core.apsim.CoreModel
            raises an erros if a report is not found
+
         Example:
         >>> from apsimNGpy import core
 
@@ -333,28 +337,28 @@ CoreModel
 
 .. function:: apsimNGpy.core.core.CoreModel.clone_model(self, model_type, model_name, adoptive_parent_type, rename=None, adoptive_parent_name=None, in_place=False)
 
-   Clone an existing model and move it to a specified parent within the simulation structure.
-        The function modifies the simulation structure by adding the cloned model to the designated parent.
+   Clone an existing  ``model`` and move it to a specified parent within the simulation structure.
+        The function modifies the simulation structure by adding the cloned model to the ``designated parent``.
 
-        This function is useful when a model instance needs to be duplicated and repositioned in the APSIM simulation
+        This function is useful when a model instance needs to be duplicated and repositioned in the ``APSIM`` simulation
         hierarchy without manually redefining its structure.
 
         Parameters:
         ----------
-        model_type : Models
+        ``model_type`` : Models
             The type of the model to be cloned, e.g., `Models.Simulation` or `Models.Clock`.
-        model_name : str
+        ``model_name`` : str
             The unique identification name of the model instance to be cloned, e.g., `"clock1"`.
-        adoptive_parent_type : Models
+        ``adoptive_parent_type`` : Models
             The type of the new parent model where the cloned model will be placed.
-        rename : str, optional
+        ``rename`` : str, optional
             The new name for the cloned model. If not provided, the clone will be renamed using
             the original name with a `_clone` suffix.
-        adoptive_parent_name : str, optional
+        ``adoptive_parent_name`` : str, optional
             The name of the parent model where the cloned model should be moved. If not provided,
             the model will be placed under the default parent of the specified type.
-        in_place : bool, optional
-            If True, the cloned model remains in the same location but is duplicated. Defaults to False.
+        ``in_place`` : bool, optional
+            If ``True``, the cloned model remains in the same location but is duplicated. Defaults to ``False``.
 
         Returns:
         -------
@@ -410,12 +414,15 @@ CoreModel
 
         Parameters
         ----------
-        model_type : str
+        ``model_type`` : str
             Type of the model component to modify (e.g., 'Clock', 'Manager', 'Soils.Physical', etc.).
-        simulations : Union[str, list], optional
+
+        ``simulations`` : Union[str, list], optional
             A simulation name or list of simulation names in which to search. Defaults to all simulations in the model.
-        model_name : str
+
+        ``model_name`` : str
             Name of the model instance to modify.
+
         **kwargs : dict
             Additional keyword arguments specific to the model type. These vary by component:
 
@@ -953,10 +960,14 @@ CoreModel
 
    Args:
 
-        - model_type (Models): type of model tied to Models Namespace
-        - new_parent_type: new model parent type (Models)
-        - model_name:name of the model e.g., Clock, or Clock2, whatever name that was given to the model
-        -  new_parent_name: what is the new parent names =Field2, this field is optional but important if you have nested simulations
+        - ``model_type`` (Models): type of model tied to Models Namespace
+
+        - ``new_parent_type``: new model parent type (Models)
+
+        - ``model_name``:name of the model e.g., Clock, or Clock2, whatever name that was given to the model
+
+        -  ``new_parent_name``: what is the new parent names =Field2, this field is optional but important if you have nested simulations
+
         Returns:
 
           returns instance of apsimNGpy.core.core.apsim.ApsimModel or apsimNGpy.core.core.apsim.CoreModel
@@ -972,7 +983,7 @@ CoreModel
 
         Parameters:
         -----------
-        report_names : Union[str, list]
+        ``report_names`` : Union[str, list]
             Name or list of names of report tables to read. These should match the
             report model names in the simulation output.
 
@@ -983,9 +994,9 @@ CoreModel
 
         Raises:
         -------
-        ValueError
+        ``ValueError``
             If any of the requested report names are not found in the available tables.
-        RuntimeError
+        ``RuntimeError``
             If the simulation has not been run successfully before attempting to read data.
 
 .. function:: apsimNGpy.core.core.CoreModel.recompile_edited_model(self, out_path: os.PathLike)
@@ -1002,13 +1013,14 @@ CoreModel
 
         Parameters
         ----------
-        model_type : Models
+        ``model_type`` : Models
             The type of the model to remove (e.g., `Models.Clock`). This parameter is required.
 
-        model_name : str, optional
+        ``model_name`` : str, optional
             The name of the specific model instance to remove (e.g., `"Clock"`). If not provided, all models of the
             specified type may be removed.
-        @Returns:
+
+        Returns:
            None
         Example:
                >>> from apsimNGpy import core
@@ -1144,35 +1156,35 @@ CoreModel
 
 .. function:: apsimNGpy.core.core.CoreModel.run(self, report_name: Union[tuple, list, str] = None, simulations: Union[tuple, list] = None, clean_up: bool = False, verbose: bool = False, **kwargs) -> 'CoreModel'
 
-   Run APSIM model simulations.
+   Run ``APSIM`` model simulations.
 
         Parameters
         ----------
-        report_name : Union[tuple, list, str], optional
+        ``report_name`` : Union[tuple, list, str], optional
             Defaults to APSIM default Report Name if not specified.
             - If iterable, all report tables are read and aggregated into one DataFrame.
             - If None, runs without collecting database results.
             - If str, a single DataFrame is returned.
 
-        simulations : Union[tuple, list], optional
+        ``simulations`` : Union[tuple, list], optional
             List of simulation names to run. If None, runs all simulations.
 
-        clean_up : bool, optional
+        ``clean_up`` : bool, optional
             If True, removes existing database before running.
 
-        verbose : bool, optional
+        ``verbose`` : bool, optional
             If True, enables verbose output for debugging. The method continues with debugging info anyway if the run was unsuccessful
 
-        kwargs : dict
+        ``kwargs`` : dict
             Additional keyword arguments, e.g., to_csv=True
 
         Returns
         -------
-        CoreModel
+        ``CoreModel``
             Instance of the class CoreModel.
-       RuntimeError
-            Raised if the APSIM run is unsuccessful. Common causes include missing meteorological files,
-            mismatched simulation start dates with weather data, or other configuration issues.
+       ``RuntimeError``
+            Raised if the ``APSIM`` run is unsuccessful. Common causes include ``missing meteorological files``,
+            mismatched simulation ``start`` dates with ``weather`` data, or other ``configuration issues``.
 
 .. function:: apsimNGpy.core.core.CoreModel.save(self, file_name=None)
 
