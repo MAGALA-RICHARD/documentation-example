@@ -116,7 +116,7 @@ Let's take a look at how it works.
         6  1500-1800  8.0      300.0
 
 
-# Inspect ``one`` or ``more`` specific parameters
+# Inspect ``one`` or ``more`` specific parameters::
 
         >>> model_instance.inspect_model_parameters('Organic', simulations='Simulation', model_name='Organic', parameters='Carbon')
           Carbon
@@ -128,6 +128,9 @@ Let's take a look at how it works.
         5    0.12
         6    0.12
 
+
+Inspect only few selected parameters ``'Carbon'``, ``'CNR'``::
+
         >>> model_instance.inspect_model_parameters('Organic', simulations='Simulation', model_name='Organic', parameters=['Carbon', 'CNR'])
            Carbon   CNR
         0    1.20  12.0
@@ -138,7 +141,7 @@ Let's take a look at how it works.
         5    0.12  12.0
         6    0.12  12.0
 
-# Inspect ``Report`` module attributes
+# Inspect ``Report`` module attributes::
 
         >>> model_instance.inspect_model_parameters('Report', simulations='Simulation', model_name='Report')
         {'EventNames': ['[Maize].Harvesting'],
@@ -157,12 +160,12 @@ Let's take a look at how it works.
         >>> model_instance.inspect_model_parameters('Report', simulations='Simulation', model_name='Report', parameters='EventNames')
         {'EventNames': ['[Maize].Harvesting']}
 
-# Inspect  ``Weather`` file path
+# Inspect  ``Weather`` file path::
 
         >>> model_instance.inspect_model_parameters('Weather', simulations='Simulation', model_name='Weather')
         '%root%/Examples/WeatherFiles/AU_Dalby.met'
 
-# Inspect ``Manager`` script parameters
+# Inspect ``Manager`` script parameters::
 
         >>> model_instance.inspect_model_parameters('Manager',
         ... simulations='Simulation', model_name='Sow using a variable rule')
