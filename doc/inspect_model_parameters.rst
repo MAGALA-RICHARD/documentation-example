@@ -33,7 +33,7 @@ Examples:
 
 Shorthand: 'Clock', 'Weather'
 
-Fully qualified: 'Models.Clock', 'Models.Climate.Weather'
+Fully qualified: ``'Models.Clock'``, ``'Models.Climate.Weather'``
 
 simulations (str or list):
 One or more simulation names from your APSIM file to query. defaults to all
