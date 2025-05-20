@@ -75,7 +75,9 @@ Let's take a look at how it works.
 
     from apsimNGpy.core import CoreModel
     model_instance = CoreModel('Maize')
-    # Inspect full soil organic profile
+
+# Inspect full soil organic profile
+
     model_instance.inspect_model_parameters('Organic', simulations='Simulation', model_name='Organic')
            CNR  Carbon      Depth  FBiom  ...         FOM  Nitrogen  SoilCNRatio  Thickness
         0  12.0    1.20      0-150   0.04  ...  347.129032     0.100         12.0      150.0
@@ -87,7 +89,9 @@ Let's take a look at how it works.
         6  12.0    0.12  1500-1800   0.01  ...   22.191217     0.010         12.0      300.0
         [7 rows x 9 columns]
 
-        # inspect soil ``physical`` profile
+
+# inspect soil ``physical`` profile
+
         >>> model_instance.inspect_model_parameters('Physical', simulations='Simulation', model_name='Physical')
             AirDry        BD       DUL  ...        SWmm Thickness  ThicknessCumulative
         0  0.130250  1.010565  0.521000  ...   78.150033     150.0                150.0
@@ -99,7 +103,8 @@ Let's take a look at how it works.
         6  0.280000  1.187495  0.452332  ...  135.699528     300.0               1800.0
         [7 rows x 17 columns]
 
-        # Inspect soil chemical profile
+# Inspect soil chemical profile
+
         >>> model_instance.inspect_model_parameters('Chemical', simulations='Simulation', model_name='Chemical')
                Depth   PH  Thickness
         0      0-150  8.0      150.0
