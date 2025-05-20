@@ -45,9 +45,22 @@ Example: If model_type='Solute', this could be 'NO3', 'NH4', or 'Urea'. if the m
 parameters (str, set, list, tuple, optional):
 Specific parameter(s) to retrieve. Defaults to 'all', which returns all available attributes.
 Common examples for layered models like Solute: Depth, InitialValues, SoluteBD, Thickness.
-
 **kwargs:
 Reserved for future use (currently unused).
+
+Returns
+---------------------------------
+| Model Type  | Return Format                                    |
+| ----------- | ------------------------------------------------ |
+| Weather     | File path(s) as string(s)                        |
+| Clock       | Dictionary with `Start` and `End` datetimes      |
+| Manager     | Dictionary of script parameters                  |
+| Soil models | `pandas.DataFrame` with layered data             |
+| Report      | Dictionary with `VariableNames` and `EventNames` |
+| Cultivar    | Dictionary of parameter strings                  |
+
+
+.. plain text
 
         Examples
         --------
