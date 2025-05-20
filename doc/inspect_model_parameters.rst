@@ -144,7 +144,7 @@ Inspect only few selected parameters ``'Carbon'``, ``'CNR'``::
         6    0.12  12.0
 
 
-Inspect ``Report`` module attributes. Report attributes are returned in two categories;
+Inspect ``Report`` model attributes. Report attributes are returned in two categories;
  1. 'EventNames': used for triggering recording or reporting events
  2. 'VariableNames': actual variable  paths::
 
@@ -165,12 +165,12 @@ Inspect ``Report`` module attributes. Report attributes are returned in two cate
         >>> model_instance.inspect_model_parameters('Report', simulations='Simulation', model_name='Report', parameters='EventNames')
         {'EventNames': ['[Maize].Harvesting']}
 
-# Inspect  ``Weather`` file path::
+Inspect  ``Weather`` file path. The returned weather file is a ``path`` for weather data::
 
         >>> model_instance.inspect_model_parameters('Weather', simulations='Simulation', model_name='Weather')
         '%root%/Examples/WeatherFiles/AU_Dalby.met'
 
-# Inspect ``Manager`` script parameters::
+Inspect ``Manager`` script parameters. These scripts are from the Manager Module::
 
         >>> model_instance.inspect_model_parameters('Manager',
         ... simulations='Simulation', model_name='Sow using a variable rule')
