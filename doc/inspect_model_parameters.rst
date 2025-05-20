@@ -31,7 +31,7 @@ model_type (str):
 The type or class of the model to inspect.
 Examples:
 
-Shorthand: 'Clock', 'Weather'
+Shorthand:      ``'Clock'``, ``'Weather'``
 
 Fully qualified: ``'Models.Clock'``, ``'Models.Climate.Weather'``
 
@@ -85,7 +85,7 @@ Let's take a look at how it works.
         6  12.0    0.12  1500-1800   0.01  ...   22.191217     0.010         12.0      300.0
         [7 rows x 9 columns]
 
-        # inspect soil physical profile
+        # inspect soil ``physical`` profile
         >>> model_instance.inspect_model_parameters('Physical', simulations='Simulation', model_name='Physical')
             AirDry        BD       DUL  ...        SWmm Thickness  ThicknessCumulative
         0  0.130250  1.010565  0.521000  ...   78.150033     150.0                150.0
