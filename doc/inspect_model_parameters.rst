@@ -182,7 +182,7 @@ Let's take a look at how it works.
         ... parameters='Population')
         {'Population': '10'}
 
-# Inspect ``Cultivar`` parameters
+# Inspect ``Cultivar`` parameters::
 
         >>> model_instance.inspect_model_parameters('Cultivar',
         ... simulations='Simulation', model_name='B_110') # lists all path specifications for B_110 parameters abd their values
@@ -200,7 +200,7 @@ Let's take a look at how it works.
         ... model_name='B_110', parameters='[Phenology].Juvenile.Target.FixedValue')
         {'[Phenology].Juvenile.Target.FixedValue': '210'}
 
-# Inspect ``SurfaceOrganicMatter`` module
+# Inspect ``SurfaceOrganicMatter`` module::
 
         >>> model_instance.inspect_model_parameters('Models.Surface.SurfaceOrganicMatter',
         ... simulations='Simulation', model_name='SurfaceOrganicMatter')
@@ -222,7 +222,7 @@ Let's take a look at how it works.
         ... model_name='SurfaceOrganicMatter', parameters={'InitialCNR', 'InitialResidueMass'})
         {'InitialCNR': 100.0, 'InitialResidueMass': 500.0}
 
-# Inspect simulation ``Clock``
+# Inspect simulation ``Clock``::
 
         >>> model_instance.inspect_model_parameters('Clock', simulations='Simulation', model_name='Clock')
         {'End': datetime.datetime(2000, 12, 31, 0, 0),
@@ -238,7 +238,7 @@ Let's take a look at how it works.
         ... model_name='Clock', parameters='Start').year # gets the start year only
         1990
 
-# Inspect ``Solute`` models with ``Urea`` as an example. Others Solutes include ``NO3``, ``NH4``
+# Inspect ``Solute`` models with ``Urea`` as an example. Others Solutes include ``NO3``, ``NH4``::
 
         >>> model_instance.inspect_model_parameters('Solute', simulations='Simulation', model_name='Urea')
                Depth  InitialValues  SoluteBD  Thickness
@@ -250,7 +250,7 @@ Let's take a look at how it works.
         5  1200-1500            0.0  1.162873      300.0
         6  1500-1800            0.0  1.187495      300.0
 
-# Inspect NH4 ``InitialValues``
+# Inspect NH4 ``InitialValues``::
 
         >>> model_instance.inspect_model_parameters('Solute', simulations='Simulation', model_name='NH4',
         ... parameters='InitialValues')
