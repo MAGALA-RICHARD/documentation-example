@@ -1332,9 +1332,9 @@ apsimNGpy.core.base_data
 
     ``simulations_object``: bool to specify whether to return apsimNGp.core simulation object defaults to ``True``
 
-    Return:
+    Return
     -------------
-        apsimNGpy.core.CoreModel simulation objects
+    apsimNGpy.core.CoreModel simulation objects
 
      Example
      -----------------
@@ -1355,12 +1355,11 @@ apsimNGpy.core.base_data
 
     ``simulations_object``: If True, returns an APSIMNGpy.core simulation object; if False, returns the path to the simulation file.
 
-    return:
-    -------------
+     Returns
+     --------
+     An APSIMNGpy.core simulation object or the file path (str or Path) if simulation_object is ``False``
 
-       An APSIMNGpy.core simulation object or the file path (str or Path) if simulation_object is ``False``
-
-    Examples:
+     Examples:
         >>> # Load the ``CoreModel`` object directly
         >>> model = load_default_simulations('Maize', simulations_object=True)
         >>> # Run the ``model``
@@ -1648,12 +1647,11 @@ apsimNGpy.core.structure
 
     ``simulations_object``: If True, returns an APSIMNGpy.core simulation object; if False, returns the path to the simulation file.
 
-    return:
-    -------------
+     Returns
+     --------
+     An APSIMNGpy.core simulation object or the file path (str or Path) if simulation_object is ``False``
 
-       An APSIMNGpy.core simulation object or the file path (str or Path) if simulation_object is ``False``
-
-    Examples:
+     Examples:
         >>> # Load the ``CoreModel`` object directly
         >>> model = load_default_simulations('Maize', simulations_object=True)
         >>> # Run the ``model``
