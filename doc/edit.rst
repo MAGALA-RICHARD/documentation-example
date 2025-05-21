@@ -62,7 +62,7 @@ Parameters
         - ``cultivar_manager`` (str): Name of the Manager script managing the cultivar, which must contain the `CultivarName` parameter. Required to propagate updated cultivar values, as APSIM treats cultivars as read-only.
 
 Raises
---------
+^^^^^^^^
 ``ValueError``
     If the model instance is not found, required kwargs are missing, or `kwargs` is empty.
 
@@ -70,7 +70,7 @@ Raises
     If the logic for the specified `model_type` is not implemented.
 
 Examples
---------
+^^^^^^^^^^
 
         >>> model = CoreModel(model='Maize')
 
