@@ -32,14 +32,14 @@ Parameters
 
     - ``Manager``:
         - Variables to update in the Manager script using `update_mgt_by_path`.
-        The parameters in a manager script are specific to each script see See :ref:`inspect_model_parameters` for more details. on how to inspect and retrieve these paramters without opening the file in a GUI
+        The parameters in a manager script are specific to each script see See :ref:`Inspect Model Parameters` for more details. on how to inspect and retrieve these paramters without opening the file in a GUI
 
     - ``Physical | Chemical | Organic | Water:``
        layered soil properties
 +------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- +
 | Soil Model Type  | **Parameters**                                                                                                                                                                                          |
 +==================+=========================================================================================================================================================================================================+
-| Physical         | ``AirDry``, ``BD``, ``DUL``, ``DULmm``, ``Depth``, ``DepthMidPoints``, ``KS``, ``LL15``, ``LL15mm``, ``PAWC``, ``PAWCmm``, ``SAT``, ``SATmm``, ``SW``, ``SWmm``, ``Thickness``, ``ThicknessCumulative`` |
+| Physical         | ``AirDry``, BD, DUL, DULmm``, Depth, DepthMidPoints, KS``, ``LL15``, ``LL15mm``, ``PAWC``, ``PAWCmm``, ``SAT``, ``SATmm``, ``SW``, ``SWmm``, ``Thickness``, ``ThicknessCumulative`` |
 +------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | Organic          | ``CNR``, ``Carbon``, ``Depth``, ``FBiom``, ``FInert``, ``FOM``, ``Nitrogen``, ``SoilCNRatio``, ``Thickness``                                                                                            |
 +------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
