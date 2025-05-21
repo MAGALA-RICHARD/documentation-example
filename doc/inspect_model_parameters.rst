@@ -44,11 +44,11 @@ model_name (``str``):
 The instance name of the model within the simulation.
 Example: If model_type = ``Solute``,  this could be ``'NO3'``, ``'NH4'``, or ``'Urea'``. if the model was renamed, the new name is the model_name
 
-parameters (``str``, `set`, `list`, `tuple`, optional):
+parameters (``str, set, list, tuple``, optional):
 Specific parameter(s) to retrieve. Defaults to ``'all'``, which returns all available attributes.
 Common examples for layered models like Solute: Depth, InitialValues, SoluteBD, Thickness.
 
-**kwargs: Reserved for future use (currently unused).
+``**kwargs``: Reserved for future use (currently unused).
 
 Returns
 
