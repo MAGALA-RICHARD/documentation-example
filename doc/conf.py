@@ -23,6 +23,7 @@ exclude_patterns = ['sphinx.ext.duration',
 'sphinx.ext.napoleon',
                     'sphinx.ext.doctest',
                     'sphinx.ext.autodoc',
+                    'sphinx.ext.autosectionlabel',
                     'sphinx.ext.autosummary',
                     'sphinx.ext.githubpages',
                     "sphinx.ext.intersphinx",
@@ -46,7 +47,11 @@ html_theme = "sphinx_rtd_theme"
 
 exclude_patterns = ["_build", "Thumbs.db", ".DS_Store", '.apsimx', '.db']
 
+
+
 html_static_path = ['_static']
+
+autosectionlabel_prefix_document = True
 
 rst_prolog = """
 .. include:: <s5defs.txt>
