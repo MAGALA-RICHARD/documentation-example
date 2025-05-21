@@ -213,7 +213,7 @@ here they are returned as key value pairs with parameters as the keys::
         ... model_name='B_110', parameters='[Phenology].Juvenile.Target.FixedValue')
         {'[Phenology].Juvenile.Target.FixedValue': '210'}
 
-Inspect ``SurfaceOrganicMatter`` module. the surface organic matter paramters are not layered as ``Organic, Physical and Water or Chemical``::
+Inspect ``SurfaceOrganicMatter`` module. the surface organic matter parameters are not layered as ``Organic, Physical and Water or Chemical``::
 
         >>> model_instance.inspect_model_parameters('Models.Surface.SurfaceOrganicMatter',
         ... simulations='Simulation', model_name='SurfaceOrganicMatter')
