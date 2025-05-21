@@ -35,7 +35,8 @@ Parameters
         The parameters in a manager script are specific to each script. See :ref:`Inspect Model Parameters` for more details. on how to inspect and retrieve these paramters without opening the file in a GUI
 
     - ``Physical | Chemical | Organic | Water:``
-      The supported key word arguments for each model type are given in the table below. Please note the values are layered and thus a a list is accepted
+      The supported key word arguments for each model type are given in the table below. Please note the values are layered and thus a ``str`` or ``list`` is accepted.
+      when a value is supplied as alist, then it goes to the top soil layer. In case of a list, value are replaced based on their respective index in the list.
 
 +------------------+--------------------------------------------------------------------------------------------------------------------------------------+
 | Soil Model Type  | **Supported key word arguments**                                                                                                     |
