@@ -4,55 +4,58 @@ Editing Model Parameters
 Editing a model involves changing model parameter values. This task can be accomplished via a unified method called ``edit_model`` from ``CoreModel`` or ``ApsimModel`` Class
 by specifying the model type, name and simulation name.
 
-edit_method function signature::
+edit_method function signature
 
- >>>edit_model(model_type: str, simulations: Union[str, list], model_name: str, **kwargs)
+.. code-block:: python
 
-        Parameters
-        ----------
-        ``model_type`` : str
-            Type of the model component to modify (e.g., 'Clock', 'Manager', 'Soils.Physical', etc.).
+     edit_model(model_type: str, simulations: Union[str, list], model_name: str, **kwargs)
 
-        ``simulations`` : Union[str, list], optional
-            A simulation name or list of simulation names in which to search. Defaults to all simulations in the model.
+Parameters
+----------
+``model_type`` : str
+    Type of the model component to modify (e.g., 'Clock', 'Manager', 'Soils.Physical', etc.).
 
-        ``model_name`` : str
-            Name of the model instance to modify.
+``simulations`` : Union[str, list], optional
+    A simulation name or list of simulation names in which to search. Defaults to all simulations in the model.
 
-        ``**kwargs`` : dict
-            Additional keyword arguments specific to the model type. These vary by component:
+``model_name`` : str
+    Name of the model instance to modify.
 
-            - ``Weather``:
-                - ``weather_file`` (str): Path to the weather ``.met`` file.
+``**kwargs`` : dict
+    Additional keyword arguments specific to the model type. These vary by component:
 
-            - ``Clock``:
-                - Date properties such as ``Start`` and ``End`` in ISO format (e.g., '2021-01-01').
+    - ``Weather``:
+        - ``weather_file`` (str): Path to the weather ``.met`` file.
 
-            - ``Manager``:
-                - Variables to update in the Manager script using `update_mgt_by_path`.
+    - ``Clock``:
+        - Date properties such as ``Start`` and ``End`` in ISO format (e.g., '2021-01-01').
 
-            - ``Soils.Physical | Soils.Chemical | Soils.Organic | Soils.Water:``
-                - Variables to replace using ``replace_soils_values_by_path``.
+    - ``Manager``:
+        - Variables to update in the Manager script using `update_mgt_by_path`.
+        The parameters in a manager script are specific to each script see See :ref:`inspect_model_parameters` for more details. on how to inspect and retrieve these paramters without opening the file in a GUI
 
-            - ``Report``:
-                - ``report_name`` (str): Name of the report model (optional depending on structure).
-                - ``variable_spec`` (list[str] or str): Variables to include in the report.
-                - ``set_event_names`` (list[str], optional): Events that trigger the report.
+    - ``Soils.Physical | Soils.Chemical | Soils.Organic | Soils.Water:``
+        - Variables to replace using ``replace_soils_values_by_path``.
 
-            - ``Cultivar``:
-                - ``commands`` (str): APSIM path to the cultivar parameter to update.
-                - ``values`` (Any): Value to assign.
-                - ``cultivar_manager`` (str): Name of the Manager script managing the cultivar, which must contain the `CultivarName` parameter. Required to propagate updated cultivar values, as APSIM treats cultivars as read-only.
+    - ``Report``:
+        - ``report_name`` (str): Name of the report model (optional depending on structure).
+        - ``variable_spec`` (list[str] or str): Variables to include in the report.
+        - ``set_event_names`` (list[str], optional): Events that trigger the report.
 
-        Raises
-        ------
-        ``*ValueError*``
-            If the model instance is not found, required kwargs are missing, or `kwargs` is empty.
-        ``NotImplementedError``
-            If the logic for the specified `model_type` is not implemented.
+    - ``Cultivar``:
+        - ``commands`` (str): APSIM path to the cultivar parameter to update.
+        - ``values`` (Any): Value to assign.
+        - ``cultivar_manager`` (str): Name of the Manager script managing the cultivar, which must contain the `CultivarName` parameter. Required to propagate updated cultivar values, as APSIM treats cultivars as read-only.
 
-        Examples
-        --------
+Raises
+------
+``*ValueError*``
+    If the model instance is not found, required kwargs are missing, or `kwargs` is empty.
+``NotImplementedError``
+    If the logic for the specified `model_type` is not implemented.
+
+Examples
+--------
 
         >>> model = CoreModel(model='Maize')
 
