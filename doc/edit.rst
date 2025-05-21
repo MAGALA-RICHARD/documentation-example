@@ -36,7 +36,7 @@ Parameters
 
     - ``Physical | Chemical | Organic | Water:``
       The supported key word arguments for each model type are given in the table below. Please note the values are layered and thus a ``str`` or ``list`` is accepted.
-      when a value is supplied as str, then it goes to the top soil layer. In case of a list, value are replaced based on their respective index in the list. As a caution if the length of the list supplied exceeds the available number of layers in the profile, it will raise a RuntimeError during model runs
+      when a value is supplied as str, then it goes to the top soil layer. In case of a list, value are replaced based on their respective index in the list. As a caution if the length of the list supplied exceeds the available number of layers in the profile, A RuntimeError during model runs will be raised
 
 +------------------+--------------------------------------------------------------------------------------------------------------------------------------+
 | Soil Model Type  | **Supported key word arguments**                                                                                                     |
