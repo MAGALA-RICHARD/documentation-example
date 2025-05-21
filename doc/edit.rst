@@ -34,7 +34,7 @@ Parameters
         - Variables to update in the Manager script using `update_mgt_by_path`.
         The parameters in a manager script are specific to each script see See :ref:`inspect_model_parameters` for more details. on how to inspect and retrieve these paramters without opening the file in a GUI
 
-    - ``Models.Soils.Physical | Models.Soils.Chemical | Models.Soils.Organic | Models.Soils.Water:``
+    - ``Physical | Chemical | Organic | Water:``
        layered soil properties
        +------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | Soil Model Type  | **Parameters**                                                                                                                                                                                      |
@@ -45,6 +45,9 @@ Parameters
 +------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | Chemical         | ``Depth``, ``PH``, ``Thickness``                                                                                                                                                                        |
 +------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+    - SurfaceOrganicMatter
+       - InitialCNR
+       - InitialResidueMass
 
     - ``Report``:
         - ``report_name`` (str): Name of the report model (optional depending on structure).
