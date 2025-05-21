@@ -32,12 +32,13 @@ Parameters
 
     - ``Manager``:
         - Variables to update in the Manager script using `update_mgt_by_path`.
-        The parameters in a manager script are specific to each script see See :ref:`Inspect Model Parameters` for more details. on how to inspect and retrieve these paramters without opening the file in a GUI
+        The parameters in a manager script are specific to each script. See :ref:`Inspect Model Parameters` for more details. on how to inspect and retrieve these paramters without opening the file in a GUI
 
     - ``Physical | Chemical | Organic | Water:``
-       layered soil properties
+      The supported key word arguments for each model type are given in the table below.
+
 +------------------+--------------------------------------------------------------------------------------------------------------------------------------+
-| Soil Model Type  | **Parameters**                                                                                                                       |
+| Soil Model Type  | **supported key word arguments**                                                                                                                       |
 +==================+======================================================================================================================================+
 | Physical         | AirDry, BD, DUL, DULmm, Depth, DepthMidPoints, KS, LL15, LL15mm, PAWC, PAWCmm, SAT, SATmm, SW, SWmm, Thickness, ThicknessCumulative  |
 +------------------+--------------------------------------------------------------------------------------------------------------------------------------+
@@ -45,9 +46,9 @@ Parameters
 +------------------+--------------------------------------------------------------------------------------------------------------------------------------+
 | Chemical         | Depth, PH, Thickness                                                                                                                 |
 +------------------+--------------------------------------------------------------------------------------------------------------------------------------+
-    - SurfaceOrganicMatter
-       - InitialCNR
-       - InitialResidueMass
+    - ``SurfaceOrganicMatter``
+       - InitialCNR: (int)
+       - InitialResidueMass (int)
 
     - ``Report``:
         - ``report_name`` (str): Name of the report model (optional depending on structure).
