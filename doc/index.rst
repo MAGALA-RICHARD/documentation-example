@@ -30,6 +30,7 @@ Built on object-oriented principles, it provides:
    Usage
    model inspection
    inspect_model_parameters
+   edit
    cli
    factorial_experiments
    api
