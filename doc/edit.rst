@@ -35,14 +35,14 @@ Parameters
         The parameters in a manager script are specific to each script. See :ref:`Inspect Model Parameters` for more details. on how to inspect and retrieve these paramters without opening the file in a GUI
 
     - ``Physical | Chemical | Organic | Water:``
-      The supported key word arguments for each model type are given in the table below.
+      The supported key word arguments for each model type are given in the table below. Please note the values are layered and thus a a list is accepted
 
 +------------------+--------------------------------------------------------------------------------------------------------------------------------------+
 | Soil Model Type  | **Supported key word arguments**                                                                                                     |
 +==================+======================================================================================================================================+
 | Physical         | AirDry, BD, DUL, DULmm, Depth, DepthMidPoints, KS, LL15, LL15mm, PAWC, PAWCmm, SAT, SATmm, SW, SWmm, Thickness, ThicknessCumulative  |
 +------------------+--------------------------------------------------------------------------------------------------------------------------------------+
-| Organic          | CNR, Carbon, Depth, FBiom, FInert, FOM, Nitrogen, `SoilCNRatio, Thickness                                                            |
+| Organic          | CNR, Carbon, Depth, FBiom, FInert, FOM, Nitrogen, SoilCNRatio, Thickness                                                             |
 +------------------+--------------------------------------------------------------------------------------------------------------------------------------+
 | Chemical         | Depth, PH, Thickness                                                                                                                 |
 +------------------+--------------------------------------------------------------------------------------------------------------------------------------+
