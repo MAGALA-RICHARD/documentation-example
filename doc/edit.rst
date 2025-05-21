@@ -32,7 +32,7 @@ Parameters
 
     - ``Manager``:
         - Variables to update in the Manager script using `update_mgt_by_path`.
-        The parameters in a manager script are specific to each script. See :ref:`inspect-model-parameters` for more details. for more details. on how to inspect and retrieve these paramters without opening the file in a GUI
+        The parameters in a manager script are specific to each script. See :ref:`_inspect-model-parameters` for more details. for more details. on how to inspect and retrieve these paramters without opening the file in a GUI
 
     - ``Physical | Chemical | Organic | Water:``
       The supported key word arguments for each model type are given in the table below. Please note the values are layered and thus a ``str`` or ``list`` is accepted.
