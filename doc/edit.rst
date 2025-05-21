@@ -34,16 +34,17 @@ Parameters
         - Variables to update in the Manager script using `update_mgt_by_path`.
         The parameters in a manager script are specific to each script see See :ref:`inspect_model_parameters` for more details. on how to inspect and retrieve these paramters without opening the file in a GUI
 
-    - ``Soils.Physical | Soils.Chemical | Soils.Organic | Soils.Water:``
+    - ``Models.Soils.Physical | Models.Soils.Chemical | Models.Soils.Organic | Models.Soils.Water:``
        layered soil properties
-        - Physical.
-        For ``Physical`` soil profile, supported keyword arguments are ``'AirDry', 'BD', 'DUL', 'DULmm', 'Depth', 'DepthMidPoints', 'KS', 'LL15',
-        'LL15mm', 'PAWC', 'PAWCmm', 'SAT', 'SATmm', 'SW', 'SWmm', 'Thickness', 'ThicknessCumulative'``
-        - Organic
-        The following paramters are supported under ``Organic`` soil profile
-        CNR', 'Carbon', 'Depth', 'FBiom', 'FInert', 'FOM', 'Nitrogen', 'SoilCNRatio', 'Thickness'
-        - Chemical
-
+       +------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Soil Model Type  | **Parameters**                                                                                                                                                                                      |
++==================+=========================================================================================================================================================================================================+
+| Physical         | ``AirDry``, ``BD``, ``DUL``, ``DULmm``, ``Depth``, ``DepthMidPoints``, ``KS``, ``LL15``, ``LL15mm``, ``PAWC``, ``PAWCmm``, ``SAT``, ``SATmm``, ``SW``, ``SWmm``, ``Thickness``, ``ThicknessCumulative`` |
++------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Organic          | ``CNR``, ``Carbon``, ``Depth``, ``FBiom``, ``FInert``, ``FOM``, ``Nitrogen``, ``SoilCNRatio``, ``Thickness``                                                                                            |
++------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Chemical         | ``Depth``, ``PH``, ``Thickness``                                                                                                                                                                        |
++------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
     - ``Report``:
         - ``report_name`` (str): Name of the report model (optional depending on structure).
@@ -51,7 +52,7 @@ Parameters
         - ``set_event_names`` (list[str], optional): Events that trigger the report.
 
     - ``Cultivar``:
-        - ``commands`` (str): APSIM path to the cultivar parameter to update.
+        - ``commands`` (str): APSIM path to the cultivar model to update.
         - ``values`` (Any): Value to assign.
         - ``cultivar_manager`` (str): Name of the Manager script managing the cultivar, which must contain the `CultivarName` parameter. Required to propagate updated cultivar values, as APSIM treats cultivars as read-only.
 
