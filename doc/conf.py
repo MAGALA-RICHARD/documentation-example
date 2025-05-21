@@ -48,5 +48,11 @@ exclude_patterns = ["_build", "Thumbs.db", ".DS_Store", '.apsimx', '.db']
 
 html_static_path = ['_static']
 
+rst_prolog = """
+.. include:: <s5defs.txt>
+.. default-role::
+
+"""
+
 import os, sys
 sys.path.insert(0, os.path.abspath('../'))
