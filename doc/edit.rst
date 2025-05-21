@@ -37,9 +37,12 @@ Parameters
     - ``Soils.Physical | Soils.Chemical | Soils.Organic | Soils.Water:``
        layered soil properties
         - Physical.
-        For Physical soil profile, supported keyword arguments are ``'AirDry', 'BD', 'DUL', 'DULmm', 'Depth', 'DepthMidPoints', 'KS', 'LL15',
-       'LL15mm', 'PAWC', 'PAWCmm', 'SAT', 'SATmm', 'SW', 'SWmm', 'Thickness', 'ThicknessCumulative'``
+        For ``Physical`` soil profile, supported keyword arguments are ``'AirDry', 'BD', 'DUL', 'DULmm', 'Depth', 'DepthMidPoints', 'KS', 'LL15',
+        'LL15mm', 'PAWC', 'PAWCmm', 'SAT', 'SATmm', 'SW', 'SWmm', 'Thickness', 'ThicknessCumulative'``
         - Organic
+        The following paramters are supported under ``Organic`` soil profile
+        CNR', 'Carbon', 'Depth', 'FBiom', 'FInert', 'FOM', 'Nitrogen', 'SoilCNRatio', 'Thickness'
+        - Chemical
 
 
     - ``Report``:
