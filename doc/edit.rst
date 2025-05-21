@@ -46,9 +46,9 @@ edit_method function signature::
 
         Raises
         ------
-        ValueError
+        ``*ValueError*``
             If the model instance is not found, required kwargs are missing, or `kwargs` is empty.
-        NotImplementedError
+        ``NotImplementedError``
             If the logic for the specified `model_type` is not implemented.
 
         Examples
