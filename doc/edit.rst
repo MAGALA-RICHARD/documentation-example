@@ -2,7 +2,11 @@ Editing Model Parameters
 ===========================================
 
 Editing a model involves changing model parameter values. This task can be accomplished via a unified method called ``edit_model`` from ``CoreModel`` or ``ApsimModel`` Class
-by specifying the model type and name and simulation name.
+by specifying the model type, name and simulation name.
+
+edit_method function signature::
+
+        edit_model(model_type: str, simulations: Union[str, list], model_name: str, **kwargs)
 
         Parameters
         ----------
