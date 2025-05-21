@@ -38,7 +38,7 @@ Parameters
       The supported key word arguments for each model type are given in the table below.
 
 +------------------+--------------------------------------------------------------------------------------------------------------------------------------+
-| Soil Model Type  | **supported key word arguments**                                                                                                                       |
+| Soil Model Type  | **Supported key word arguments**                                                                                                     |
 +==================+======================================================================================================================================+
 | Physical         | AirDry, BD, DUL, DULmm, Depth, DepthMidPoints, KS, LL15, LL15mm, PAWC, PAWCmm, SAT, SATmm, SW, SWmm, Thickness, ThicknessCumulative  |
 +------------------+--------------------------------------------------------------------------------------------------------------------------------------+
