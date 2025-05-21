@@ -38,12 +38,19 @@ Let's take a look at how it works.
 Model Types
 """"""""""""""""""""""""""
 
-`model_type` can be any of the following classes from the `Models` namespace:
+`model_type` can be any of the following classes from the `Models` namespace, and can be passed as strings or as full path to Models namespace if Models is imported::
 
-- **Models.Manager** – Returns information about the manager scripts in simulations.
-- **Models.Core.Simulation** – Returns information about the simulation.
-- **Models.Climate.Weather** – Returns a list of paths or names pertaining to weather models.
-- **Models.Core.IPlant** – Returns a list of paths or names for all crop models available in the simulation.
+- ``'Models.Manager'`` or ``"Manager"`` – Returns information about the manager scripts in simulations.
+- ``Models.Core.Simulation``  or ``"Simulation"``– Returns information about the simulation.
+- ``Models.Climate.Weather`` or ``'Weather'`` – Returns a list of paths or names pertaining to weather models.
+- ``Models.Core.IPlant`` – or ``'IPlant'`` Returns a list of paths or names for all crop models available in the simulation.
+- ``'Models.Report'`` or ``"Report"`` returns the available report paths or names
+- ``"Models.Surface.SurfaceOrganicMatter"`` or ``'SurfaceOrganicMatter'`` returns path to the surface organic module
+- ``'Models.PMF.Cultivar' or ``'Cultivar'`` paths or names to all cultivars
+- ``Models.Soils.Physical | Models.Soils.Chemical | Models.Soils.Organic | Models.Soils.Water | Models.Soils.Solute`` or ``'Physical' | 'Chemical' | 'Organic' | 'Water' | 'Solute'``
+path to soil models
+
+
 - *(Additional model types may be available based on APSIM simulation requirements.)*
 
 Finding the Model Type
