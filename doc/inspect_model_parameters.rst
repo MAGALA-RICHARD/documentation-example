@@ -194,8 +194,8 @@ In the following example, we demonstrate how to inspect the value of a specific 
         ... parameters='Population')
         {'Population': '10'}
 
-Inspect ``Cultivar`` parameters. Please note that cultivar parameters are represent with an equal operator before the values,
-here they are returned key value pairs with paramters as the keys::
+Inspect ``Cultivar`` parameters. Please note that cultivar parameters are represented with an equal operator before the values,
+here they are returned as key value pairs with parameters as the keys::
 
         >>> model_instance.inspect_model_parameters('Cultivar',
         ... simulations='Simulation', model_name='B_110') # lists all path specifications for B_110 parameters abd their values
@@ -247,7 +247,7 @@ Example::
         ... model_name='Clock', parameters='End')
         datetime.datetime(2000, 12, 31, 0, 0)
 
-Extract ``Start`` year year only. let's see with ``start`` year as an example::
+Extract ``Start`` year only. let's see with ``start`` year as an example::
 
         >>> model_instance.inspect_model_parameters('Clock', simulations='Simulation',
         ... model_name='Clock', parameters='Start').year
@@ -256,7 +256,7 @@ Extract ``Start`` year year only. let's see with ``start`` year as an example::
 Extract  ``End`` year only::
 
         >>> model_instance.inspect_model_parameters('Clock', simulations='Simulation',
-        ... model_name='Clock', parameters='End').year # gets the start year only
+        ... model_name='Clock', parameters='End').year
         2000
 
 For this model_type, argument values to parameters can be ``start_date, end, End, Start, end_date, start``. All will return the same thing, respectively.
