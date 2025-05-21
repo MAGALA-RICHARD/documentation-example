@@ -38,7 +38,7 @@ Let's take a look at how it works.
 Model Types
 """"""""""""""""""""""""""
 
-`model_type` can be any of the following classes from the `Models` namespace, and can be passed as strings or as full path to Models namespace if Models is imported::
+`model_type` can be any of the following classes from the `Models` namespace, and can be passed as strings or as full path to Models namespace if Models is imported
 
 - ``'Models.Manager'`` or ``"Manager"`` – Returns information about the manager scripts in simulations.
 - ``Models.Core.Simulation``  or ``"Simulation"``– Returns information about the simulation.
@@ -50,8 +50,7 @@ Model Types
 - ``' Models.Clock'`` or ``'Clock'`` returns all path to the clock models available
 - ``Models.Soils.Physical | Models.Soils.Chemical | Models.Soils.Organic | Models.Soils.Water | Models.Soils.Solute`` or ``'Physical' | 'Chemical' | 'Organic' | 'Water' | 'Solute'``
     path to soil models.
-
-- *(Additional model types may be available based on APSIM simulation requirements.)*
+- *(``Additional`` model types may be available based on APSIM simulation requirements.)*
 
 Finding the Model Type
 """"""""""""""""""""""""""""""""""""""
