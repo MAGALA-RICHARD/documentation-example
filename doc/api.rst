@@ -439,30 +439,30 @@ CoreModel
         ``model_name`` : str
             Name of the model instance to modify.
 
-        **kwargs : dict
+        ``**kwargs`` : dict
             Additional keyword arguments specific to the model type. These vary by component:
 
-            - Weather:
-                - `weather_file` (str): Path to the weather `.met` file.
+            - ``Weather``:
+                - ``weather_file`` (str): Path to the weather ``.met`` file.
 
-            - Clock:
-                - Date properties such as `Start` and `End` in ISO format (e.g., '2021-01-01').
+            - ``Clock``:
+                - Date properties such as ``Start`` and ``End`` in ISO format (e.g., '2021-01-01').
 
-            - Manager:
+            - ``Manager``:
                 - Variables to update in the Manager script using `update_mgt_by_path`.
 
-            - Soils.Physical / Soils.Chemical / Soils.Organic / Soils.Water:
-                - Variables to replace using `replace_soils_values_by_path`.
+            - ``Soils.Physical | Soils.Chemical | Soils.Organic | Soils.Water:``
+                - Variables to replace using ``replace_soils_values_by_path``.
 
-            - Report:
-                - `report_name` (str): Name of the report model (optional depending on structure).
-                - `variable_spec` (list[str] or str): Variables to include in the report.
-                - `set_event_names` (list[str], optional): Events that trigger the report.
+            - ``Report``:
+                - ``report_name`` (str): Name of the report model (optional depending on structure).
+                - ``variable_spec`` (list[str] or str): Variables to include in the report.
+                - ``set_event_names`` (list[str], optional): Events that trigger the report.
 
-            - Cultivar:
-                - `commands` (str): APSIM path to the cultivar parameter to update.
-                - `values` (Any): Value to assign.
-                - `cultivar_manager` (str): Name of the Manager script managing the cultivar, which must contain the `CultivarName` parameter. Required to propagate updated cultivar values, as APSIM treats cultivars as read-only.
+            - ``Cultivar``:
+                - ``commands`` (str): APSIM path to the cultivar parameter to update.
+                - ``values`` (Any): Value to assign.
+                - ``cultivar_manager`` (str): Name of the Manager script managing the cultivar, which must contain the `CultivarName` parameter. Required to propagate updated cultivar values, as APSIM treats cultivars as read-only.
 
         Raises
         ------
