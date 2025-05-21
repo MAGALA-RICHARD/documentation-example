@@ -35,7 +35,12 @@ Parameters
         The parameters in a manager script are specific to each script see See :ref:`inspect_model_parameters` for more details. on how to inspect and retrieve these paramters without opening the file in a GUI
 
     - ``Soils.Physical | Soils.Chemical | Soils.Organic | Soils.Water:``
-        - Variables to replace using ``replace_soils_values_by_path``.
+       layered soil properties
+        - Physical.
+        For Physical soil profile, supported keyword arguments are ``'AirDry', 'BD', 'DUL', 'DULmm', 'Depth', 'DepthMidPoints', 'KS', 'LL15',
+       'LL15mm', 'PAWC', 'PAWCmm', 'SAT', 'SATmm', 'SW', 'SWmm', 'Thickness', 'ThicknessCumulative'``
+        - Organic
+
 
     - ``Report``:
         - ``report_name`` (str): Name of the report model (optional depending on structure).
