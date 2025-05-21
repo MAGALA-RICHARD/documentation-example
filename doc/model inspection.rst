@@ -48,8 +48,7 @@ Model Types
 - ``"Models.Surface.SurfaceOrganicMatter"`` or ``'SurfaceOrganicMatter'`` returns path to the surface organic module
 - ``'Models.PMF.Cultivar' or ``'Cultivar'`` paths or names to all cultivars
 - ``' Models.Clock'`` or ``'Clock'`` returns all path to the clock models available
-- ``Models.Soils.Physical | Models.Soils.Chemical | Models.Soils.Organic | Models.Soils.Water | Models.Soils.Solute`` or ``'Physical' | 'Chemical' | 'Organic' | 'Water' | 'Solute'``
-    path to soil models.
+- ``Models.Soils.Physical | Models.Soils.Chemical | Models.Soils.Organic | Models.Soils.Water | Models.Soils.Solute`` or ``'Physical' | 'Chemical' | 'Organic' | 'Water' | 'Solute'`` path to soil models.
 - *(``Additional`` model types may be available based on APSIM simulation requirements.)*
 
 Finding the Model Type
