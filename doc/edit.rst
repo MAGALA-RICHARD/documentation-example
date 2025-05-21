@@ -6,7 +6,7 @@ by specifying the model type, name and simulation name.
 
 edit_method function signature::
 
-        edit_model(model_type: str, simulations: Union[str, list], model_name: str, **kwargs)
+ >>>edit_model(model_type: str, simulations: Union[str, list], model_name: str, **kwargs)
 
         Parameters
         ----------
