@@ -8,7 +8,7 @@ Once we have reviewed the structure of our APSIM model—including the model pat
 This tutorial introduces the inspect_model_parameters method, which provides a unified way to extract parameters from a variety of APSIM model components.
 
 What Is inspect_model_parameters?
----------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The inspect_model_parameters method simplifies parameter inspection by consolidating functionality that was previously spread across multiple methods such as:
 
@@ -19,7 +19,7 @@ The inspect_model_parameters method simplifies parameter inspection by consolida
 - Various model-specific inspectors
 
 inspect_model_parameters function ``signature``
-----------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. code-block:: python
 
     inspect_model_parameters(
