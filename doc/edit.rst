@@ -51,6 +51,7 @@ Raises
 --------
 **``ValueError``**
     If the model instance is not found, required kwargs are missing, or `kwargs` is empty.
+
 ``NotImplementedError``
     If the logic for the specified `model_type` is not implemented.
 
