@@ -76,10 +76,6 @@ ApsimModel
             ``CultvarName``: cultivar name which is in the sowing module for adjusting the rue
             ``tillage``: specify whether you will be carried to adjust some physical parameters
 
-.. function:: apsimNGpy.core.apsim.ApsimModel.replace_met_from_web(self, lonlat, start_year, end_year, file_name=None)
-
-   No documentation available.
-
 .. function:: apsimNGpy.core.apsim.ApsimModel.run_edited_file(self, table_name=None)
 
    :param table_name (str): repot table name in the database
@@ -712,6 +708,24 @@ CoreModel
         ``RuntimeError``
             If the simulation has not been ``run`` successfully before attempting to read data.
 
+.. function:: apsimNGpy.core.core.CoreModel.get_weather_from_web(self, lonlat: tuple, start, end, simulations='all', source='nasapower', filename=None)
+
+   Replaces the meteorological (met) file in the model using weather data fetched from an online source.
+
+            :param lonlat: Tuple containing the longitude and latitude coordinates.
+            :type lonlat: tuple
+            :param start: Start date for the weather data retrieval.
+            :type start: str or datetime
+            :param end: End date for the weather data retrieval.
+            :type end: str or datetime
+            :param simulations: str, list of simulations to place the weather data, defaults to ``all`` as a string
+            :param source: Source of the weather data. Defaults to 'nasapower'.
+            :type source: str, optional
+            :param filename: Name of the file to save the retrieved data. If None, a default name is generated.
+            :type filename: str, optional
+            :return: Path to the saved met file.
+            :rtype: str
+
 .. function:: apsimNGpy.core.core.CoreModel.inspect_file(self, cultivar=False, **kwargs)
 
    Inspect the file by calling ``inspect_model()`` through ``get_model_paths.``
@@ -1083,24 +1097,6 @@ CoreModel
                >>> from apsimNGpy.core.core import Models
                >>> apsim = core.base_data.load_default_simulations(crop = 'Maize')
                >>> apsim = apsim.rename_model(Models.Clock, 'Clock', 'clock')
-
-.. function:: apsimNGpy.core.core.CoreModel.replace_met_from_web(self, lonlat: tuple, start, end, simulations='all', source='nasapower', filename=None)
-
-   Replaces the meteorological (met) file in the model using weather data fetched from an online source.
-
-            :param lonlat: Tuple containing the longitude and latitude coordinates.
-            :type lonlat: tuple
-            :param start: Start date for the weather data retrieval.
-            :type start: str or datetime
-            :param end: End date for the weather data retrieval.
-            :type end: str or datetime
-            :param simulations: str, list of simulations to place the weather data, defaults to ``all`` as a string
-            :param source: Source of the weather data. Defaults to 'nasapower'.
-            :type source: str, optional
-            :param filename: Name of the file to save the retrieved data. If None, a default name is generated.
-            :type filename: str, optional
-            :return: Path to the saved met file.
-            :rtype: str
 
 .. function:: apsimNGpy.core.core.CoreModel.replace_model_from(self, model, model_type: str, model_name: str = None, target_model_name: str = None, simulations: str = None)
 
@@ -1546,10 +1542,6 @@ apsimNGpy.core.base_data
             ``adJust_kl``:: Bollean, adjust, kl based on productivity index
             ``CultvarName``: cultivar name which is in the sowing module for adjusting the rue
             ``tillage``: specify whether you will be carried to adjust some physical parameters
-
-   .. method::apsimNGpy.core.apsim.ApsimModel.replace_met_from_web(self, lonlat, start_year, end_year, file_name=None)
-
-      No documentation available.
 
    .. method::apsimNGpy.core.apsim.ApsimModel.run_edited_file(self, table_name=None)
 
