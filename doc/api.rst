@@ -76,6 +76,10 @@ ApsimModel
             ``CultvarName``: cultivar name which is in the sowing module for adjusting the rue
             ``tillage``: specify whether you will be carried to adjust some physical parameters
 
+.. function:: apsimNGpy.core.apsim.ApsimModel.replace_met_from_web(self, lonlat, start_year, end_year, file_name=None)
+
+   No documentation available.
+
 .. function:: apsimNGpy.core.apsim.ApsimModel.run_edited_file(self, table_name=None)
 
    :param table_name (str): repot table name in the database
@@ -440,8 +444,10 @@ CoreModel
             Name of the model instance to modify.
         ``cachit`` : bool, optional
            used to cache results for model selection. Defaults to False. Important during repeated calls, like in optimization.
-        cache_size: int, optional
-        maximum number of caches that can be made to avoid memory leaks in case cacheit is true. Defaults to 300
+           please do not cache, when you expect to make model adjustment, such as adding new child nodes
+
+        ``cache_size``: int, optional
+           maximum number of caches that can be made to avoid memory leaks in case cacheit is true. Defaults to 300
 
         ``**kwargs`` : dict
             Additional keyword arguments specific to the model type. These vary by component:
@@ -1078,6 +1084,24 @@ CoreModel
                >>> apsim = core.base_data.load_default_simulations(crop = 'Maize')
                >>> apsim = apsim.rename_model(Models.Clock, 'Clock', 'clock')
 
+.. function:: apsimNGpy.core.core.CoreModel.replace_met_from_web(self, lonlat: tuple, start, end, simulations='all', source='nasapower', filename=None)
+
+   Replaces the meteorological (met) file in the model using weather data fetched from an online source.
+
+            :param lonlat: Tuple containing the longitude and latitude coordinates.
+            :type lonlat: tuple
+            :param start: Start date for the weather data retrieval.
+            :type start: str or datetime
+            :param end: End date for the weather data retrieval.
+            :type end: str or datetime
+            :param simulations: str, list of simulations to place the weather data, defaults to ``all`` as a string
+            :param source: Source of the weather data. Defaults to 'nasapower'.
+            :type source: str, optional
+            :param filename: Name of the file to save the retrieved data. If None, a default name is generated.
+            :type filename: str, optional
+            :return: Path to the saved met file.
+            :rtype: str
+
 .. function:: apsimNGpy.core.core.CoreModel.replace_model_from(self, model, model_type: str, model_name: str = None, target_model_name: str = None, simulations: str = None)
 
    Replace a model e.g., a soil model with another soil model from another APSIM model.
@@ -1523,6 +1547,10 @@ apsimNGpy.core.base_data
             ``CultvarName``: cultivar name which is in the sowing module for adjusting the rue
             ``tillage``: specify whether you will be carried to adjust some physical parameters
 
+   .. method::apsimNGpy.core.apsim.ApsimModel.replace_met_from_web(self, lonlat, start_year, end_year, file_name=None)
+
+      No documentation available.
+
    .. method::apsimNGpy.core.apsim.ApsimModel.run_edited_file(self, table_name=None)
 
       :param table_name (str): repot table name in the database
@@ -1844,47 +1872,6 @@ apsimNGpy.manager.weathermanager
           >>> from apsimNGpy.manager.weathermanager import get_met_from_day_met
           >>> wf = get_met_from_day_met(lonlat=(-93.04, 42.01247),
           >>> start=2000, end=2020,timeout = 30, wait =2, retry_number=3, filename='daymet.met')
-
-.. function:: apsimNGpy.manager.weathermanager.get_weather(lonlat: Union[tuple, list], start: int = 1990, end: int = 2020, source: str = 'daymet', filename: str = '__met_.met')
-
-   Collects data from various sources.
-
-        Only ``nasapower`` and ``dayment`` are currently supported sources, so it will raise an error if mesonnet is suggested.
-
-        -Note if you are not in mainland USA, please don't pass source = ``'dayment'`` as it will raise an error due to geographical
-             scope
-
-         Parameters
-         -----------------------
-
-         ``lonlat``: (tuple) lonlat values
-
-         ``start``: (int) start year
-
-         ``end``: (int) end year
-
-         ``source``: (str) source API for weather data
-
-         ``filename``: (str) filename for saving on disk
-
-        Example.
-
-            >>> from apsimNGpy.manager.weathermanager import get_weather
-            >>> from apsimNGpy.core.base_data import load_default_simulations
-
-            # We are going to collect data from my hometown Kampala
-
-            >>> kampala_loc = 35.582520, 0.347596
-
-            # Notice it return a path to the downloaded weather file
-
-            >>> met_file = get_weather(kampala_loc, start=1990, end=2020, source='nasa', filename='kampala_new.met')
-            >>> print(met_file)
-
-            # next we can pass this weather file to apsim model
-
-            >>> maize_model = load_default_simulations(crop = 'maize')
-            >>> maize_model.replace_met_file(weather_file = met_file)
 
 .. function:: apsimNGpy.manager.weathermanager.impute_data(met, method='mean', verbose=False, **kwargs)
 
