@@ -67,7 +67,7 @@ Execute the simulation and visualize results:
 Factorial Experiment with Cultivar Replacements
 -----------------------------------------------
 
-To conduct a factorial experiment involving cultivar modifications, a crop replacement must be added.
+To conduct a factorial experiment involving ``cultivar`` modifications, a crop replacement must be added.
 
 Load the maize simulations again and initialize APSIM:
 
@@ -102,7 +102,7 @@ Add a factor for radiation use efficiency (RUE):
 
     apsimC.add_factor(specification='[Maize].Leaf.Photosynthesis.RUE.FixedValue = 1.0, 1.23, 4.3', factor_name='RUE')
 
-Run the experiment and visualize the impact of RUE on yield:
+Run the experiment and visualize the impact of ``RUE`` on yield:
 
 .. code-block:: python
 
@@ -113,4 +113,4 @@ Run the experiment and visualize the impact of RUE on yield:
 Conclusion
 ----------
 
-This tutorial demonstrated how to set up and run factorial experiments using APSIM NG. By systematically varying multiple factors (e.g., nitrogen levels, population density, and RUE), we can analyze their effects on crop yield effectively.
+This tutorial demonstrated how to set up and run factorial experiments using apsimNGpy. By systematically varying multiple factors (e.g., nitrogen levels, population density, and RUE), we can analyze their effects on the target variable effectively.
