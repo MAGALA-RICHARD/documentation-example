@@ -424,7 +424,7 @@ CoreModel
 
         Returns: instance of the class CoreModel or ApsimModel
 
-.. function:: apsimNGpy.core.core.CoreModel.edit_model(self, model_type: str, model_name: str, simulations: Union[str, list] = 'all', **kwargs)
+.. function:: apsimNGpy.core.core.CoreModel.edit_model(self, model_type: str, model_name: str, simulations: Union[str, list] = 'all', cacheit=False, cache_size=300, **kwargs)
 
    Modify various APSIM model components by specifying the model type and name across given simulations.
 
@@ -438,6 +438,10 @@ CoreModel
 
         ``model_name`` : str
             Name of the model instance to modify.
+        ``cachit`` : bool, optional
+           used to cache results for model selection. Defaults to False. Important during repeated calls, like in optimization.
+        cache_size: int, optional
+        maximum number of caches that can be made to avoid memory leaks in case cacheit is true. Defaults to 300
 
         ``**kwargs`` : dict
             Additional keyword arguments specific to the model type. These vary by component:
