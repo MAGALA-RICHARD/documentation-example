@@ -460,7 +460,7 @@ CoreModel
             - ``Soils.Physical | Soils.Chemical | Soils.Organic | Soils.Water:``
                 - Variables to replace using ``replace_soils_values_by_path``.
 
-            valid parameters are shown below;
+            Valid ``parameters`` are shown below;
 
             +------------------+--------------------------------------------------------------------------------------------------------------------------------------+
             | Soil Model Type  | **Supported key word arguments**                                                                                                     |
@@ -684,19 +684,6 @@ CoreModel
 .. function:: apsimNGpy.core.core.CoreModel.get_model_paths(self, cultivar=False) -> list[str]
 
    Select out a few model types to use for building the APSIM file inspections
-
-.. function:: apsimNGpy.core.core.CoreModel.get_report(self, simulation=None, names_only=False)
-
-   Get current report string
-
-        Parameters
-        ----------
-        ``simulation``, optional
-            Simulation name, if `None` use the first simulation.
-        Returns
-        -------
-            List of report lines.
-            @param names_only: return the names of the reports as a list if names_only is True
 
 .. function:: apsimNGpy.core.core.CoreModel.get_simulated_output(self, report_names: Union[str, list], **kwargs) -> pandas.core.frame.DataFrame
 
