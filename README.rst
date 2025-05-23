@@ -26,8 +26,8 @@ apsimNGpy
    :target: https://github.com/MAGALA-RICHARD/apsimNGpy/network/members
    :alt: GitHub Forks
 
-apsimNGpy: The Next Generation Agroecosytem Simulation Library
 
+apsimNGpy: The Next Generation Agroecosytem Simulation Library
 ====================================================================
 
 Our cutting-edge open-source framework, apsimNGpy, empowers advanced agroecosystem modeling through the utilization
