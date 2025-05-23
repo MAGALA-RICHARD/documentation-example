@@ -459,7 +459,9 @@ CoreModel
 
             - ``Soils.Physical | Soils.Chemical | Soils.Organic | Soils.Water:``
                 - Variables to replace using ``replace_soils_values_by_path``.
-            valid parameters are shown below
+
+            valid parameters are shown below;
+
             +------------------+--------------------------------------------------------------------------------------------------------------------------------------+
             | Soil Model Type  | **Supported key word arguments**                                                                                                     |
             +==================+======================================================================================================================================+
