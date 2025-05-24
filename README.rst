@@ -38,10 +38,10 @@ Requirements
 ***********************************************************************************
 1. Dotnet, install from https://learn.microsoft.com/en-us/dotnet/core/install/
 2. Python3
-3. APSIM: Add the directory containing the models executable to the system's PATH or python path (to locate the required .dll files). This can be achieved in either of the following ways:
-4. Utilize the APSIM installer provided for this purpose.
-5. Build APSIM from its source code. This is comming soon
-6. Minimum; 8GM RAM, CPU Core i7
+3. APSIM: Add the directory containing the models executable to the system's PATH or python path (To locate the required .dll files). This can be achieved in one the following ways:
+4. APSIM installed on the target device
+6. At least; 4GB RAM
+7. supported OS: MacOS, linnux and Windows
 
 .. _Installation:
 
@@ -131,24 +131,8 @@ In your home folder you could look for folder named apsimNGpy_meta_info './APSIM
      2. Open the file `apsimNGpy_config.ini` within this folder.
      3. Modify the `apsim_location` entry to reflect your desired APSIM binary path.
 
-2. change based os.environ module
-************************************
 
-Alternatively, you can use the code at the top of your script as follows
-
-.. code-block:: python
-
-    # Search for the APSIM binary installation path and add it to os.environ as follows:
-    import os
-    os.environ['APSIM'] = r'path/to/your/apsim/binary/folder/bin'
-
-- Note:
-
-This approach may not work consistently in all scenarios, but you can try it.
-The above script line should always be placed at the beginning of your simulation script.
-However, why follow this approach when you can achieve the same result more efficiently? See the approach below:
-
-3. Use the apsimNGpy config module:
+2. Use the apsimNGpy config module:
 *****************************************************************
 
 .. code-block:: python
@@ -159,7 +143,7 @@ However, why follow this approach when you can achieve the same result more effi
     set_apsim_bin_path(path=r'path/to/your/apsim/binary/folder/bin')
 
 
-4. Use command line interface
+3. Use command line interface
 *********************************************************************
 
 After installing apsimNGpy, navigate to your terminal and run the following
